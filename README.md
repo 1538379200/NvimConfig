@@ -54,6 +54,7 @@ EOF
 - 使用```npm i -g [language server]``` 为lsp安装语言服务器，也可以在nvim中使用```:LspInstall [language server]```安装，不知道名字可以去[nvim-lsp-install](https://github.com/williamboman/nvim-lsp-installer#available-lsps)
 查看
 - 修改 init.vim 文件中的python3_host_prog，改成你的python路径，填写到python.exe，不用后面的exe后缀
+- 将 ```init.vim``` 文件中的 ```set guifont``` 设置成你自己下载的字体
 - 进入nvim程序，```:PackerInstall```或者```:PackerSync```安装更新全部插件
 - 下载 [ctags](https://github.com/universal-ctags/ctags-win32/releases)程序，解压添加到环境变量
 - 下载 [ripgrep](https://github.com/BurntSushi/ripgrep/releases/tag/13.0.0) 并添加到环境变量，这用于全局搜索，telescope、todo-commants插件需要使用此工具
