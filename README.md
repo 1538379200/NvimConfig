@@ -53,7 +53,9 @@ EOF
 - ```pip install neovim```安装python扩展
 - 使用```npm i -g [language server]``` 为lsp安装语言服务器，也可以在nvim中使用```:LspInstall [language server]```安装，不知道名字可以去[nvim-lsp-install](https://github.com/williamboman/nvim-lsp-installer#available-lsps)
 查看
+- 修改 init.vim 文件中的python3_host_prog，改成你的python路径，填写到python.exe，不用后面的exe后缀
 - 进入nvim程序，```:PackerInstall```或者```:PackerSync```安装更新全部插件
+- 下载 [ctags](https://github.com/universal-ctags/ctags-win32/releases)程序，解压添加到环境变量
 
 
 ## 预览
@@ -76,18 +78,26 @@ EOF
 ![image](https://user-images.githubusercontent.com/42434762/180963299-4c2c5e42-e6c9-4668-970b-4ad3f977ac47.png)
 
 ## 键位操作
-> 键位映射操作可以在```lua/keymap.lua```/```init.vim```中进行修改
+> 键位映射操作可以在```init.vim```中进行修改
 
-- ```ctrl + n``` 可以打开/关闭文件树，文件树可以按m标记批量操作
+- ```<Space>o``` 可以打开/关闭文件树，文件树可以按m标记批量操作
 - ```crtl + w + w```/```ctrl + w + [方向键]``` 切换窗口
-- ```Alt + [左右方向键]``` 切换标签
-- ```Alt + ↓``` 选择关闭标签
+- ```Alt + [左右方向键]``` 或者 ```Alt+h/l``` 切换buffer
+- ```Alt + ↓``` 选择关闭标签，或者 ```:bd``` 
 - ```ctrl + ↑``` 与ctrl + y相同，向上滚动屏幕
 - ```ctrl + ↓``` 与ctrl + e相同，向下滚动屏幕
-- ```F10``` 在python文件中可以直接运行代码，在命令行显示
-- ```ctrl + F10``` 运行python或者golang代码，结果显示在terminal(其他语言可在init.vim的python块中添加，golang为```go run xxx```)
+- ```Ctrl+\``` 打开悬浮终端，注意如果不使用 ```exit``` 退出，终端会有缓存，不能运行更新后的文件
 - ```gcc```快速注释一行代码，选中区域```gc```可以注释选中区域
 - ```space space```，进入符号操作模式，输入任意符号回车，即可将光标所在单词用此符号包裹，space为默认leader按键
+- ```s/S``` 向上或者向下跳转单词，需要输入两个字符
+- ```<Space>ff``` 打开当前目录文件搜索，还有fg等操作
+- ```<F10>``` 自动更新ctags文件，会从当前文件的同级，向上查找10次
+- 在项目根目录使用 ```ctags -R``` 创建tags文件后，可使用 ```Ctrl]``` 跳转到函数、变量定义，```Ctrl+o``` 跳回
+- 在可视模式下 ```Ctrl+c``` 复制到系统粘贴板，普通或者编辑模式下，```Ctrl+v``` 从系统粘贴板获取数据粘贴
+- ```gd``` 可在buffer内进行变量跳转
+- ```K``` 或者 ```Shift+k``` 可以打开方法说明
+- ```zR``` 展开所有折叠，```zM``` 收缩所有折叠，```zO``` 展开当前折叠下的所有折叠，```za``` 切换折叠状态，```zj``` 和 ```zk``` 可以向下或者向上跳转到折叠处
+- ```Alt+j``` 跳转下一个函数开头，```Alt+k``` 跳转上一个函数开头，同 ```]m``` 和 ```[m``` 
 - vim-surround操作快捷键可查看其文档
 
 - 其他操作为vim基础操作，未做改变
