@@ -27,8 +27,8 @@ set autoread
 set termguicolors
 set scrolloff=5
 "" set background = light
-let python3_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
-let python_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
+let python3_host_prog = "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python39\\python"
+let python_host_prog = "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python39\\python"
 
 " 设置neovide编辑器中的样式
 if exists("g:neovide")
@@ -152,4 +152,18 @@ nmap <F10> <Esc>:call UpdateTags()<CR>
 " 设置寄存器的粘贴，系统粘贴
 vmap <C-c> "+y
 nmap <C-v> "+p
-imap <C-v> <Esc>"+p
+imap <C-v> <Esc>"+pa
+
+" 错误显示插件快捷键
+nnoremap <leader>xx <cmd>TroubleToggle<cr>								" 显错误列表
+nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>		" 诊断当前工作空间
+nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>			" 诊断当前文件
+nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>						" 打开快速修复内容
+nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>						" 打开错误列表
+nnoremap gR <cmd>TroubleToggle lsp_references<cr>						" 参照lsp错误指示
+
+" todo插件的快捷方式
+nmap <leader>ts <cmd>TodoTelescope<cr>		" 使用悬浮窗搜索todo等
+nmap <leader>tt <cmd>TodoTrouble<cr>		" 显示当前的错误信息
+nmap <leader>tl <cmd>TodoLocList<cr>		" 通过底部显示列表
+nmap <leader>tq <cmd>TodoQuickFix<cr>		" 打开todo的快速修复列表

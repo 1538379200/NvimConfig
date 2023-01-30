@@ -45,33 +45,46 @@ return require('packer').startup({function()
 	-- tokyonight主题安装
 	use 'folke/tokyonight.nvim'
 
-	-- 文件标签页
-	-- use{'akinsho/bufferline.nvim',
-	--   config = function()
-	--     require("bufferline").setup{}
-	--   end
-	-- }
+	-- todo插件
+	use {
+	  "folke/todo-comments.nvim",
+	  requires = "nvim-lua/plenary.nvim",
+	  config = function()
+	  require("todo-comments").setup {
+		-- your configuration comes here
+		-- or leave it empty to use the default settings
+		-- refer to the configuration section below
+	  }
+	end
+	}
 
-	-- 状态栏
-	-- use{'windwp/windline.nvim',
-	--   config = function()
-	--     require('wlsample.basic')
-	--   end
-	-- }
-use {'vim-airline/vim-airline'}
-use {'vim-airline/vim-airline-themes'}
-use {'mhinz/vim-startify'}
-use {'morhetz/gruvbox'}
-use {'cdelledonne/vim-cmake'}
-use {'karb94/neoscroll.nvim'}
-use {'thinca/vim-quickrun'}
-use {'luochen1990/rainbow'}
-use {'ap/vim-css-color'}
-use {'windwp/nvim-autopairs'}
-use {'tpope/vim-surround'}
+	-- 错误显示插件
+	use {
+	  "folke/trouble.nvim",
+	  requires = "nvim-tree/nvim-web-devicons",
+	  config = function()
+		require("trouble").setup {
+		  -- your configuration comes here
+		  -- or leave it empty to use the default settings
+		  -- refer to the configuration section below
+		}
+	  end
+	  }
+	use {'vim-airline/vim-airline'}
+	use {'vim-airline/vim-airline-themes'}
+	use {'mhinz/vim-startify'}
+	use {'morhetz/gruvbox'}
+	use {'cdelledonne/vim-cmake'}
+	use {'karb94/neoscroll.nvim'}
+	use {'thinca/vim-quickrun'}
+	use {'luochen1990/rainbow'}
+	use {'ap/vim-css-color'}
+	use {'windwp/nvim-autopairs'}
+	use {'tpope/vim-surround'}
 end, 
 config = {
 	display = {
 		open_fn = require('packer.util').float,
 	}
 }})
+

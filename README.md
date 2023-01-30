@@ -56,6 +56,7 @@ EOF
 - 修改 init.vim 文件中的python3_host_prog，改成你的python路径，填写到python.exe，不用后面的exe后缀
 - 进入nvim程序，```:PackerInstall```或者```:PackerSync```安装更新全部插件
 - 下载 [ctags](https://github.com/universal-ctags/ctags-win32/releases)程序，解压添加到环境变量
+- 下载 [ripgrep](https://github.com/BurntSushi/ripgrep/releases/tag/13.0.0) 并添加到环境变量，这用于全局搜索，telescope、todo-commants插件需要使用此工具
 
 
 ## 预览
@@ -98,6 +99,9 @@ EOF
 - ```K``` 或者 ```Shift+k``` 可以打开方法说明
 - ```zR``` 展开所有折叠，```zM``` 收缩所有折叠，```zO``` 展开当前折叠下的所有折叠，```za``` 切换折叠状态，```zj``` 和 ```zk``` 可以向下或者向上跳转到折叠处
 - ```Alt+j``` 跳转下一个函数开头，```Alt+k``` 跳转上一个函数开头，同 ```]m``` 和 ```[m``` 
+- ```<space>ts/tl/tq/tt``` 悬浮窗搜索todo标签/显示todo列表/显示快速修复列表/显示错误信息列表
+- ```<space>xx/xl/xw/xd/xq``` 显示错误/显示错误列表/诊断当前工作空间/诊断当前文件/调出快速修复
+- ```<space>ff/fg/fb/fh``` 悬浮窗查找当前目录文件/全局模糊查找字符对应文件/搜索buffer/搜索插件帮助信息
 - vim-surround操作快捷键可查看其文档
 
 - 其他操作为vim基础操作，未做改变
