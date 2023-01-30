@@ -1,0 +1,155 @@
+lua << EOF
+require('plugins')
+require('lsp')
+require('init_lspconfig')
+require('keymap')
+require('term')
+require('indent')
+EOF
+
+" 设置leader按键
+let mapleader = " "
+
+" ----------------------------nvim基础配置------------------------------------
+set nobackup
+set noswapfile
+set noundofile
+set number
+set relativenumber
+set mouse=a
+set shiftwidth=2
+set cursorline
+set cursorcolumn
+set showcmd
+set fileencoding=utf-8
+set tabstop=4
+set autoread
+set termguicolors
+set scrolloff=5
+"" set background = light
+let python3_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
+let python_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
+
+" 设置neovide编辑器中的样式
+if exists("g:neovide")
+  set guifont=JetBrainsMono\ NFM:h10
+  " let g:neovide_fullscreen = v:true
+  " let g:neovide_multigrid = v:true
+endif
+
+" 设置折叠模式，按照更多的缩进
+" manual 代表手工定义的折叠
+" indent 更多缩进代表更高级别的折叠
+" expr 用表达式定义折叠
+" syntax 通过语法高亮定义折叠
+" diff 对没有更改文本进行折叠
+" marker 对文中标志进行折叠
+set fdm=indent
+
+" 设置tags位置
+set tags=tags;set autochdir
+
+" 设置颜色主题
+" colorscheme gruvbox
+colorscheme tokyonight-storm
+
+" -----------------airline配置-----------------
+"  设置切换、关闭tab标签快捷键，就是替换原来的bn和bp命令
+nnoremap <A-Right> :bn<CR>		
+nnoremap <A-Left> :bp<CR>
+nnoremap <A-Down> :bd<CR>
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#buffer_nr_show = 1        "显示buffer编号
+let g:airline#extensions#tabline#buffer_nr_format = '%s:'
+let g:airline#extensions#battery#enabled = 1
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_theme='solarized'
+
+" 平滑滚动
+" lua require('neoscroll').setup()
+
+" set QuickRun 
+" nnoremap <F10> <Esc>:QuickRun<CR>
+
+
+nnoremap <C-Up> <C-y>
+nnoremap <C-Down> <C-e>
+
+" 彩虹括号配置
+let g:rainbow_active = 1
+
+" 符号匹配配置
+lua << EOF
+local status, autopairs = pcall(require, "nvim-autopairs")
+if (not status) then return end
+
+autopairs.setup({
+  disable_filetype = { "TelescopePrompt" , "vim" },
+})
+EOF
+
+" 符号替换快捷键配置
+nnoremap <leader><leader> <Esc>:norm ysiw
+
+" 设置编辑模式下的移动
+imap <C-k> <Up>
+imap <C-j> <Down>
+imap <C-h> <Left>
+imap <C-l> <Right>
+nmap <A-h> <Esc>:bp<CR>
+nmap <A-l> <Esc>:bn<CR>
+nmap <leader>o <esc>:NvimTreeToggle<CR>
+imap <C-d> <BackSpace>
+" 文件选择设置
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" 设置函数切换快捷方式
+nmap <A-k> [m
+nmap <A-j> ]m
+
+" 悬浮终端设置
+" set
+" autocmd TermEnter term://*toggleterm#*
+"       \ tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+" 
+" " By applying the mappings this way you can pass a count to your
+" " mapping to open a specific window.
+" " For example: 2<C-t> will open terminal 2
+" nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+" inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
+
+
+" 设置关于ctags的自动更新策略，使用python进行
+function! UpdateTags()
+python << EOF
+from pathlib import Path
+import os
+import vim
+current_file = vim.eval('resolve(expand("%"))')
+base_path = Path(current_file).resolve().parent
+for i in range(10):
+    print(f"寻找目录：{base_path}")
+    if (base_path / 'tags').exists():
+        os.system('ctags -R')
+        print("======更新完毕======")
+        break
+    elif i == 9:
+        print("======未找到tags文件，更新失败======")
+    else:
+        base_path = base_path.parent
+EOF
+endfunction
+
+nmap <F10> <Esc>:call UpdateTags()<CR>
+
+" 设置寄存器的粘贴，系统粘贴
+vmap <C-c> "+y
+nmap <C-v> "+p
+imap <C-v> <Esc>"+p
