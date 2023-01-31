@@ -69,7 +69,14 @@ return require('packer').startup({function()
 		  -- refer to the configuration section below
 		}
 	  end
-	  }
+	}
+	
+	-- rnvimr 悬浮的文件树系统
+	use "kevinhwang91/rnvimr"
+
+	-- 标记显示插件
+	use "chentoast/marks.nvim"
+	
 	use {'vim-airline/vim-airline'}
 	use {'vim-airline/vim-airline-themes'}
 	use {'mhinz/vim-startify'}

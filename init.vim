@@ -5,6 +5,7 @@ require('init_lspconfig')
 require('keymap')
 require('term')
 require('indent')
+require("mark")
 EOF
 
 " 设置leader按键
@@ -17,18 +18,21 @@ set noundofile
 set number
 set relativenumber
 set mouse=a
-set shiftwidth=2
+set shiftwidth=4	" 使用 > 进行缩进时的空格量
 set cursorline
 set cursorcolumn
 set showcmd
 set fileencoding=utf-8
-set tabstop=4
+set tabstop=4		" 使用tab代表的空格数
+set autoindent		" 设置自动缩进
+set expandtab		" 使用tab输入不会转换成字符而是空格
+set softtabstop=0	" 不将tab和空格混合使用
 set autoread
 set termguicolors
 set scrolloff=5
 "" set background = light
-let python3_host_prog = "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python39\\python"
-let python_host_prog = "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python39\\python"
+let python3_host_prog = "C:\Users\2\AppData\Local\Programs\Python\Python310\python"
+let python_host_prog = "C:\Users\2\AppData\Local\Programs\Python\Python310\python"
 
 " 设置neovide编辑器中的样式
 if exists("g:neovide")
@@ -45,6 +49,7 @@ endif
 " diff 对没有更改文本进行折叠
 " marker 对文中标志进行折叠
 set fdm=indent
+set nofoldenable
 
 " 设置tags位置
 set tags=tags;set autochdir
@@ -167,3 +172,7 @@ nmap <leader>ts <cmd>TodoTelescope<cr>		" 使用悬浮窗搜索todo等
 nmap <leader>tt <cmd>TodoTrouble<cr>		" 显示当前的错误信息
 nmap <leader>tl <cmd>TodoLocList<cr>		" 通过底部显示列表
 nmap <leader>tq <cmd>TodoQuickFix<cr>		" 打开todo的快速修复列表
+
+" gcc注释插件的另外快捷方式
+nmap <C-/> gcc
+vmap <C-/> gc
