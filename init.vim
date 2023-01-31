@@ -6,6 +6,7 @@ require('keymap')
 require('term')
 require('indent')
 require("mark")
+require("smartsplit")
 EOF
 
 " 设置leader按键
@@ -31,8 +32,8 @@ set autoread
 set termguicolors
 set scrolloff=5
 "" set background = light
-let python3_host_prog = "C:\Users\2\AppData\Local\Programs\Python\Python310\python"
-let python_host_prog = "C:\Users\2\AppData\Local\Programs\Python\Python310\python"
+let python3_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
+let python_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
 
 " 设置neovide编辑器中的样式
 if exists("g:neovide")
@@ -56,7 +57,9 @@ set tags=tags;set autochdir
 
 " 设置颜色主题
 " colorscheme gruvbox
-colorscheme tokyonight-storm
+colorscheme tokyonight-moon
+" colorscheme github_light
+" colorscheme github_dimmed
 
 " -----------------airline配置-----------------
 "  设置切换、关闭tab标签快捷键，就是替换原来的bn和bp命令
@@ -98,7 +101,7 @@ autopairs.setup({
 EOF
 
 " 符号替换快捷键配置
-nnoremap <leader><leader> <Esc>:norm ysiw
+" nnoremap <leader><leader> <Esc>:norm ysiw
 
 " 设置编辑模式下的移动
 imap <C-k> <Up>
@@ -176,3 +179,8 @@ nmap <leader>tq <cmd>TodoQuickFix<cr>		" 打开todo的快速修复列表
 " gcc注释插件的另外快捷方式
 nmap <C-/> gcc
 vmap <C-/> gc
+
+" 快速刷新配置文件
+nmap <leader>vcr <cmd>so $MYVIMRC<cr>
+
+" 快速进行分屏大小设置

@@ -77,6 +77,20 @@ return require('packer').startup({function()
 	-- 标记显示插件
 	use "chentoast/marks.nvim"
 	
+    -- github 主题配色
+    use({
+      'projekt0n/github-nvim-theme', tag = 'v0.0.7',
+    -- or                            branch = '0.0.x'
+      config = function()
+        require('github-theme').setup({
+          -- ...
+        })
+      end
+    })
+
+    -- 快捷设置分屏尺寸
+    use('mrjones2014/smart-splits.nvim')
+
 	use {'vim-airline/vim-airline'}
 	use {'vim-airline/vim-airline-themes'}
 	use {'mhinz/vim-startify'}
