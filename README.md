@@ -174,6 +174,10 @@ local function map_key(config, key, content)
   end, { buffer = config.bufnr, silent = true, nowait = true })
 end
 ```
+你也可以将文件 141 到 143 行注释掉，将 177 行的 ```%p``` 换成 ```%w```
+![image](https://user-images.githubusercontent.com/42434762/216031593-230e90b1-96ca-41db-9399-bf2489abfc1b.png)
+![image](https://user-images.githubusercontent.com/42434762/216031639-0a7bf848-7a33-40ba-b71a-a3f441b58234.png)
+
 
 
 ## 正在使用部分插件
