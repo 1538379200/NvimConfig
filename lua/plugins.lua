@@ -58,6 +58,44 @@ return require('packer').startup({function()
 	end
 	}
 
+    -- 替换statify的启动页
+    use {
+      'glepnir/dashboard-nvim',
+      event = 'VimEnter',
+      config = function()
+        require('dashboard').setup {
+            theme = 'hyper',
+            config = {
+              week_header = {
+               enable = true,
+              },
+              shortcut = {
+                { desc = ' Update', group = '@property', action = 'Lazy update', key = 'u' },
+                {
+                  desc = ' Files',
+                  group = 'Label',
+                  action = 'Telescope find_files',
+                  key = 'f',
+                },
+                {
+                  desc = ' Apps',
+                  group = 'DiagnosticHint',
+                  action = 'Telescope app',
+                  key = 'a',
+                },
+                {
+                  desc = ' dotfiles',
+                  group = 'Number',
+                  action = 'Telescope dotfiles',
+                  key = 'd',
+                },
+              },
+            },
+        }
+      end,
+      requires = {'nvim-tree/nvim-web-devicons'}
+    }
+
 	-- 错误显示插件
 	use {
 	  "folke/trouble.nvim",
@@ -71,8 +109,6 @@ return require('packer').startup({function()
 	  end
 	}
 	
-	-- rnvimr 悬浮的文件树系统
-	use "kevinhwang91/rnvimr"
 
 	-- 标记显示插件
 	use "chentoast/marks.nvim"
@@ -93,7 +129,7 @@ return require('packer').startup({function()
 
 	use {'vim-airline/vim-airline'}
 	use {'vim-airline/vim-airline-themes'}
-	use {'mhinz/vim-startify'}
+	-- use {'mhinz/vim-startify'}
 	use {'morhetz/gruvbox'}
 	use {'cdelledonne/vim-cmake'}
 	use {'karb94/neoscroll.nvim'}

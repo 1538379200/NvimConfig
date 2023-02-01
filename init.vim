@@ -38,8 +38,8 @@ let python_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python31
 " 设置neovide编辑器中的样式
 if exists("g:neovide")
   set guifont=JetBrainsMono\ NFM:h10
-  " let g:neovide_fullscreen = v:true
-  " let g:neovide_multigrid = v:true
+  let g:neovide_confirm_quit = v:true
+  let g:neovide_hide_mouse_when_typing = v:true
 endif
 
 " 设置折叠模式，按照更多的缩进
