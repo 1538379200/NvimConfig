@@ -146,6 +146,34 @@ EOF
 - ```Ctrl+方向键``` 可以快速在分屏之间切换
 - ```Ctrl+Shift+方向键``` 可以改变窗口高度和宽度
 
+### dashboard修改windows支持
+找到 ```C:\Users\2\AppData\Local\nvim-data\site\pack\packer\opt\dashboard-nvim\lua\dashboard\theme``` 下的 ```hyper.lua``` 文件，修改function ```map_key``` ，大概在185行左右，将内容修改成：
+```lua
+local function map_key(config, key, content)
+  keymap.set('n', key, function()
+    local text = content or api.nvim_get_current_line()
+    if string.find(text, "~") ~= nil then
+      local scol = text:find('%p')
+      text = text:sub(scol)
+      local user_path = os.getenv("USERPROFILE")
+      text = string.gsub(text, "~", user_path)
+      path = text
+    else
+      local index = string.find(text, '%w')
+      text = text:sub(index)
+      local tbl = vim.split(text, '%s', { trimempty = true })
+      path = tbl[#tbl]
+      path = vim.fs.normalize(path)
+      path = vim.loop.fs_realpath(path)
+    end
+    if vim.fn.isdirectory(path) == 1 then
+      vim.cmd(config.project.action .. path)
+    else
+      vim.cmd('edit ' .. path)
+    end
+  end, { buffer = config.bufnr, silent = true, nowait = true })
+end
+```
 
 
 ## 正在使用部分插件
