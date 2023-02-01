@@ -32,12 +32,14 @@ set autoread
 set termguicolors
 set scrolloff=5
 "" set background = light
-let python3_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
-let python_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
+" let python3_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
+" let python_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
+let python3_host_prog = "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python39\\python"
 
 " 设置neovide编辑器中的样式
 if exists("g:neovide")
-  set guifont=JetBrainsMono\ NFM:h10
+  " set guifont=JetBrainsMono\ NFM:h10
+  set guifont=JetBrainsMonoNL\ Nerd\ Font\ Mono:h11
   let g:neovide_confirm_quit = v:true
   let g:neovide_hide_mouse_when_typing = v:true
 endif
@@ -183,4 +185,14 @@ vmap <C-/> gc
 " 快速刷新配置文件
 nmap <leader>vcr <cmd>so $MYVIMRC<cr>
 
-" 快速进行分屏大小设置
+" 使用默认浏览器快速打开html文件
+function! OpenHtml()
+    if &filetype == "html"
+        execute 'silent ! start "1" "%:p"'
+    else
+        echo "当前文件不是html文件"
+    endif
+endfunction
+
+" 打开HTML快捷方式
+nmap <F12> :call OpenHtml()<cr>
