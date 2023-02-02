@@ -58,6 +58,9 @@ EOF
 - 进入nvim程序，```:PackerInstall```或者```:PackerSync```安装更新全部插件
 - 下载 [ctags](https://github.com/universal-ctags/ctags-win32/releases)程序，解压添加到环境变量
 - 下载 [ripgrep](https://github.com/BurntSushi/ripgrep/releases/tag/13.0.0) 并添加到环境变量，这用于全局搜索，telescope、todo-commants插件需要使用此工具
+- 下载 [gcc 编译工具](https://sourceforge.net/projects/mingw-w64/files/)，这个是 treesitter 插件需要使用的东西，下载解压并放入环境变量path中，不使用在线安装，可能会出错
+![image](https://user-images.githubusercontent.com/42434762/216216145-7a841d08-3ea5-4c16-9d2d-84a9e8418b1c.png)
+
 
 
 ## 预览
