@@ -34,14 +34,14 @@ set autoread
 set termguicolors
 set scrolloff=5
 "" set background = light
-let python3_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
+" let python3_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
 " let python_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
-" let python3_host_prog = "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python39\\python"
+let python3_host_prog = "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python39\\python"
 
 " 设置neovide编辑器中的样式
 if exists("g:neovide")
-  set guifont=JetBrainsMono\ NFM:h10
-  " set guifont=JetBrainsMonoNL\ Nerd\ Font\ Mono:h11
+  " set guifont=JetBrainsMono\ NFM:h10
+  set guifont=JetBrainsMonoNL\ Nerd\ Font\ Mono:h11
   let g:neovide_confirm_quit = v:true
   let g:neovide_hide_mouse_when_typing = v:true
 endif
@@ -209,3 +209,35 @@ function FoldConfig()
 endfunction
 
 autocmd BufAdd,BufEnter,BufNew,BufNewFile,BufWinEnter * :call FoldConfig()
+
+
+" 检查python的pth文件是否存在并将当前目录填入到pth中
+function! AddPth(...)
+python << EOF
+import vim
+from pathlib import Path
+import sys
+python_path = sys.executable
+if python_path.lower().endswith(".exe"):
+    python_path = Path(python_path).parent
+else:
+    python_path = Path(python_path)
+pack_path = str(python_path / "Lib" / "site-packages")
+current_project = vim.eval("expand('%:p')")
+if int(vim.eval("a:0")) > 0:
+    args = vim.eval("a:1")
+else:
+    args = "0"
+if args.isdigit():
+    insert_path = str(Path(current_project).parents[int(args)])
+else:
+    insert_path = vim.eval("a:1")
+filename = insert_path.split("\\")[-1] + ".pth"
+save_file = Path(pack_path) / filename
+with save_file.open("w", encoding="utf8") as f:
+    f.write(insert_path)
+print(f"The pth file '{filename}' is successfully created to the '{pack_path}', save data: '{insert_path}'!!!!!!")
+EOF
+endfunction
+
+
