@@ -56,7 +56,7 @@ EOF
 - 修改 init.vim 文件中的python3_host_prog，改成你的python路径，填写到python.exe，不用后面的exe后缀
 - 将 ```init.vim``` 文件中的 ```set guifont``` 设置成你自己下载的字体
 - 进入nvim程序，```:PackerInstall```或者```:PackerSync```安装更新全部插件
-- 下载 [ctags](https://github.com/universal-ctags/ctags-win32/releases)程序，解压添加到环境变量，如果使用lspsaga可以不下载此工具
+- ~~下载 [ctags](https://github.com/universal-ctags/ctags-win32/releases)程序，解压添加到环境变量，如果使用lspsaga可以不下载此工具~~
 - 下载 [ripgrep](https://github.com/BurntSushi/ripgrep/releases/tag/13.0.0) 并添加到环境变量，这用于全局搜索，telescope、todo-commants插件需要使用此工具
 - 下载 [gcc 编译工具](https://sourceforge.net/projects/mingw-w64/files/)，这个是 treesitter 插件需要使用的东西，下载解压并放入环境变量path中，不使用在线安装，可能会出错
 ![image](https://user-images.githubusercontent.com/42434762/216216145-7a841d08-3ea5-4c16-9d2d-84a9e8418b1c.png)
@@ -93,16 +93,14 @@ EOF
 - ```ctrl + ↓``` 与ctrl + e相同，向下滚动屏幕
 - ```Ctrl+\``` 打开悬浮终端，注意如果不使用 ```exit``` 退出，终端会有缓存，不能运行更新后的文件
 - ```gcc```快速注释一行代码，选中区域```gc```可以注释选中区域
-- ```space space```，进入符号操作模式，输入任意符号回车，即可将光标所在单词用此符号包裹，space为默认leader按键
 - ```s/S``` 向上或者向下跳转单词，需要输入两个字符
 - ```<Space>ff``` 打开当前目录文件搜索，还有fg等操作
 - ```<F10>``` 自动更新ctags文件，会从当前文件的同级，向上查找10次
-- 在项目根目录使用 ```ctags -R``` 创建tags文件后，可使用 ```Ctrl]``` 跳转到函数、变量定义，```Ctrl+o``` 跳回
 - 在可视模式下 ```Ctrl+c``` 复制到系统粘贴板，普通或者编辑模式下，```Ctrl+v``` 从系统粘贴板获取数据粘贴
-- ```gd``` 可在buffer内进行变量跳转
+- ```gd``` 悬浮窗打开定义
 - ```K``` 或者 ```Shift+k``` 可以打开方法说明
 - ```zR``` 展开所有折叠，```zM``` 收缩所有折叠，```zO``` 展开当前折叠下的所有折叠，```za``` 切换折叠状态，```zj``` 和 ```zk``` 可以向下或者向上跳转到折叠处
-- vim-surround操作快捷键可查看其文档
+- [vim-surround](https://github.com/tpope/vim-surround)符号操作快捷键可查看其文档，这是能快速用符号包括单词的插件
 - ```Alt+j``` 跳转下一个函数开头，```Alt+k``` 跳转上一个函数开头，同 ```]m``` 和 ```[m``` 
 
 ### todo和错误搜索
@@ -155,7 +153,7 @@ EOF
 - ```gh``` 查找器，查找所有具备光标下单词的文件以及代码，跳转 ```p``` ，编辑 ```o<enter``` ，竖向分屏 ```s``` ，横向分屏 ```i``` , tab显示 ```t``` ，退出 ```q``` 或者 ```<Esc>```
 - ```<space>ca``` code_action，有错误的地方可以弹出快速修复的选项，和pycharm编辑器的小黄灯相似，支持普通模式和可视化模式
 - ```gr``` 重命名，```Ctrl+c``` 取消操作
-- ~~```gd``` 跳转定义（同vim原生） ，你可以在配置中重新启用~~
+- ~~```gd``` 跳转到定义文件中，你可以在配置中重新启用~~
 - ```gd``` 悬浮窗查看定义， 编辑 ```<C-c>o```，竖向分屏 ```<C-c>v```，横向分屏 ```<C-c>i```，tabe显示 ```<C-c>t```，退出 ```q```,关闭 ```ESC``` 
 - ```<space>sl``` 显示当前行的错误信息
 - ```<space>sc``` 和上面的一样，只是可以传递一个参数
