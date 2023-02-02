@@ -59,6 +59,9 @@ set nofoldenable
 " 设置tags位置
 set tags=tags;set autochdir
 
+" 分词设置，包含这些的都认为是一个单词
+set iskeyword=@,48-57,_,192-255,-
+
 " 设置颜色主题
 " colorscheme gruvbox
 colorscheme tokyonight-moon
