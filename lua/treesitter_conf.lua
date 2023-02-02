@@ -1,6 +1,6 @@
 require'nvim-treesitter.configs'.setup {
     -- 默认确定安装的语言服务
-    ensure_installed = {"html", "markdown", "toml", "python", "lua", "vim"},
+    ensure_installed = {"html", "markdown", "toml", "python", "lua", "vim", "ini"},
     -- 高亮显示
     highlight = {
         enable = true,

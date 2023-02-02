@@ -60,7 +60,7 @@ EOF
 - 下载 [gcc 编译工具](https://sourceforge.net/projects/mingw-w64/files/)，这个是 treesitter 插件需要使用的东西，下载解压并放入环境变量path中，不使用在线安装，可能会出错
 ![image](https://user-images.githubusercontent.com/42434762/216216145-7a841d08-3ea5-4c16-9d2d-84a9e8418b1c.png)
 - 进入nvim程序或者neovide编辑器，```:PackerInstall```或者```:PackerSync```安装/更新全部插件
-- 使用 ```:TSInstall``` 安装需要的语言高亮支持，比如 ```:TSInstall markdown```  ```:TSInstall toml```  ```TSInstall json``` 等，你可以去 [treesitter](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages)查看支持的语言类型，默认安装了会自动安装html、toml、python、json、yaml、lua、vim支持，使用```:TSInstallInfo``` 查看安装的语言，使用 ```:TSModuleInfo``` 可以查看当前文件的启用状态
+- 使用 ```:TSInstall``` 安装需要的语言高亮支持，比如 ```:TSInstall markdown```  ```:TSInstall toml```  ```TSInstall json``` 等，你可以去 [treesitter](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages)查看支持的语言类型，默认安装了会自动安装html、toml、python、json、yaml、lua、vim、ini支持，使用```:TSInstallInfo``` 查看安装的语言，使用 ```:TSModuleInfo``` 可以查看当前文件的启用状态
 
 
 ## 预览
