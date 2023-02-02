@@ -151,7 +151,6 @@ EOF
 
 ### lspsaga编码支持
 使用此插件需要最好装上 ```treesitter``` 插件，在弹出文档的时候，需要treesitter下载的markdown语言支持
-#### 总页面keymap
 
 - ```gh``` 查找器，跳转 ```p``` ，编辑 ```o<enter``` ，竖向分屏 ```s``` ，横向分屏 ```i``` , tab显示 ```t``` ，退出 ```q``` 或者 ```<Esc>```
 - ```<leader>ca``` code_action，代码操作，支持普通模式和可视化模式
