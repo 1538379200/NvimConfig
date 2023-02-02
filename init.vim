@@ -7,6 +7,8 @@ require('term')
 require('indent')
 require("mark")
 require("smartsplit")
+require("lspsaga_keymap")
+require("treesitter_conf")
 EOF
 
 " 设置leader按键
@@ -32,14 +34,14 @@ set autoread
 set termguicolors
 set scrolloff=5
 "" set background = light
-" let python3_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
+let python3_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
 " let python_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
-let python3_host_prog = "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python39\\python"
+" let python3_host_prog = "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python39\\python"
 
 " 设置neovide编辑器中的样式
 if exists("g:neovide")
-  " set guifont=JetBrainsMono\ NFM:h10
-  set guifont=JetBrainsMonoNL\ Nerd\ Font\ Mono:h11
+  set guifont=JetBrainsMono\ NFM:h10
+  " set guifont=JetBrainsMonoNL\ Nerd\ Font\ Mono:h11
   let g:neovide_confirm_quit = v:true
   let g:neovide_hide_mouse_when_typing = v:true
 endif
@@ -196,3 +198,11 @@ endfunction
 
 " 打开HTML快捷方式
 nmap <F12> :call OpenHtml()<cr>
+
+" treesitter 找不到折叠问题的设置
+function FoldConfig()
+	set foldmethod=expr
+	set foldexpr=nvim_treesitter#foldexpr()
+endfunction
+
+autocmd BufAdd,BufEnter,BufNew,BufNewFile,BufWinEnter * :call FoldConfig()

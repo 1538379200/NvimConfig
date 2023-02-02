@@ -124,6 +124,25 @@ return require('packer').startup({function()
       end
     })
 
+    -- lsp扩展美化插件
+    use({
+        "glepnir/lspsaga.nvim",
+        branch = "main",
+        config = function()
+            require("lspsaga").setup({})
+        end,
+        requires = { {"nvim-tree/nvim-web-devicons"} }
+    })
+
+    -- treesitter 语言支持插件
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = function()
+            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            ts_update()
+        end,
+    }
+
     -- 快捷设置分屏尺寸
     use('mrjones2014/smart-splits.nvim')
 
