@@ -164,6 +164,12 @@ EOF
 - ```<space>ci``` / ```<space>co``` 显示进出的调用层级
 - ```Alt+d``` 打开lspsaga内置的悬浮终端
 
+### windows的python项目修复
+在使用vim创建python项目时，在导入的过程中会找不到我们的包，出现 ```no module named xxx``` 的这种错误，python只会在 ```sys.path``` 的路径下找包，但是我们项目并不属于，你可以将你的项目根目录，放到环境变量 ```PYTHONPATH``` 中，也可以在 ```C:\Users\admin\AppData\Local\Programs\Python\Python39\Lib\site-packages``` 路径中写上一个 ```xxx.pth``` 文件，xxx你可以定义成你项目的名字，这样即可，我们这里属于第二种方式，可以快速处理python的这种错误
+- 在项目根目录下的文件中，使用 ```:call AddPth()``` 将以当前文件的父级目录作为项目根目录，文件名称为父级文件夹名称
+- 在其他文件中使用，你可以传入数字，0代表当前文件上一级目录（父级），1代表上两级目录，以此类推，比如，我们所在文件是 ```D:\Project\base\base.py```,使用 ```:call AddPth(1)``` 将会把 ```Project``` 作为项目根目录进行处理
+- 你可以直接写入你的项目根目录路径，程序将以你输入的路径作为根目录路径，并进行文件添加
+- 添加完成后，如果你没有重启vim，将仍是报红的状态，你可以使用 ```:LspRestart``` 重启一下Lsp插件快速更新状态
 
 
 ### dashboard修改windows支持
