@@ -149,6 +149,25 @@ EOF
 - ```Ctrl+方向键``` 可以快速在分屏之间切换
 - ```Ctrl+Shift+方向键``` 可以改变窗口高度和宽度
 
+### lspsaga编码支持
+使用此插件需要最好装上 ```treesitter``` 插件，在弹出文档的时候，需要treesitter下载的markdown语言支持
+#### 总页面keymap
+
+- ```gh``` 查找器，跳转 ```p``` ，编辑 ```o<enter``` ，竖向分屏 ```s``` ，横向分屏 ```i``` , tab显示 ```t``` ，退出 ```q``` 或者 ```<Esc>```
+- ```<leader>ca``` code_action，代码操作，支持普通模式和可视化模式
+- ```gr``` 重命名
+- ```gd``` 跳转定义（同vim原生）,编辑 ```<C-c>o```，竖向分屏 ```<C-c>v```，横向分屏 ```<C-c>i```，tabe显示 ```<C-c>t```，退出 ```q```,关闭 ```ESC``` 
+- ```<leader>sl``` 显示当前行的错误信息
+- ```<leader>sc``` 和上面的一样，只是可以传递一个参数
+- ```[e``` 跳转上一个错误
+- ```]e``` 跳转下一个错误
+- ```<F7>``` 显示结构树，所有变量、类、函数、方法，跳转 ```o``` 
+- ```K``` 显示文档说明（同vim原生）
+- ```<leader>ci``` / ```<leader>co``` 显示进出的调用层级
+- ```Alt+d``` 打开lspsaga内置的悬浮终端
+
+
+
 ### dashboard修改windows支持
 找到 ```C:\Users\2\AppData\Local\nvim-data\site\pack\packer\opt\dashboard-nvim\lua\dashboard\theme``` 下的 ```hyper.lua``` 文件，修改function ```map_key``` ，大概在185行左右，将内容修改成：
 ```lua
