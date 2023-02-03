@@ -34,14 +34,14 @@ set autoread
 set termguicolors
 set scrolloff=5
 "" set background = light
-" let python3_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
+let python3_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
 " let python_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
-let python3_host_prog = "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python39\\python"
+" let python3_host_prog = "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python39\\python"
 
 " 设置neovide编辑器中的样式
 if exists("g:neovide")
-  " set guifont=JetBrainsMono\ NFM:h10
-  set guifont=JetBrainsMonoNL\ Nerd\ Font\ Mono:h11
+  set guifont=JetBrainsMono\ NFM:h11
+  " set guifont=JetBrainsMonoNL\ Nerd\ Font\ Mono:h11
   let g:neovide_confirm_quit = v:true
   let g:neovide_hide_mouse_when_typing = v:true
 endif
@@ -240,4 +240,5 @@ print(f"The pth file '{filename}' is successfully created to the '{pack_path}', 
 EOF
 endfunction
 
-
+" 自动命令每次保存重启一下Lsp
+autocmd BufWritePost,FileWritePost * LspRestart
