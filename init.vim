@@ -34,14 +34,14 @@ set autoread
 set termguicolors
 set scrolloff=5
 "" set background = light
-let python3_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
+" let python3_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
 " let python_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
-" let python3_host_prog = "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python39\\python"
+let python3_host_prog = "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python39\\python"
 
 " 设置neovide编辑器中的样式
 if exists("g:neovide")
-  set guifont=JetBrainsMono\ NFM:h11
-  " set guifont=JetBrainsMonoNL\ Nerd\ Font\ Mono:h11
+  " set guifont=JetBrainsMono\ NFM:h11
+  set guifont=JetBrainsMonoNL\ Nerd\ Font\ Mono:h11
   let g:neovide_confirm_quit = v:true
   let g:neovide_hide_mouse_when_typing = v:true
 endif
@@ -142,27 +142,27 @@ nmap <A-j> ]m
 
 
 " 设置关于ctags的自动更新策略，使用python进行
-function! UpdateTags()
-python << EOF
-from pathlib import Path
-import os
-import vim
-current_file = vim.eval('resolve(expand("%"))')
-base_path = Path(current_file).resolve().parent
-for i in range(10):
-    print(f"寻找目录：{base_path}")
-    if (base_path / 'tags').exists():
-        os.system('ctags -R')
-        print("======更新完毕======")
-        break
-    elif i == 9:
-        print("======未找到tags文件，更新失败======")
-    else:
-        base_path = base_path.parent
-EOF
-endfunction
-
-nmap <F10> <Esc>:call UpdateTags()<CR>
+" function! UpdateTags()
+" python << EOF
+" from pathlib import Path
+" import os
+" import vim
+" current_file = vim.eval('resolve(expand("%"))')
+" base_path = Path(current_file).resolve().parent
+" for i in range(10):
+"     print(f"寻找目录：{base_path}")
+"     if (base_path / 'tags').exists():
+"         os.system('ctags -R')
+"         print("======更新完毕======")
+"         break
+"     elif i == 9:
+"         print("======未找到tags文件，更新失败======")
+"     else:
+"         base_path = base_path.parent
+" EOF
+" endfunction
+"
+" nmap <F10> <Esc>:call UpdateTags()<CR>
 
 " 设置寄存器的粘贴，系统粘贴
 vmap <C-c> "+y
@@ -190,17 +190,17 @@ vmap <C-/> gc
 " 快速刷新配置文件
 nmap <leader>vcr <cmd>so $MYVIMRC<cr>
 
-" 使用默认浏览器快速打开html文件
-function! OpenHtml()
-    if &filetype == "html"
-        execute 'silent ! start "1" "%:p"'
-    else
-        echo "当前文件不是html文件"
-    endif
-endfunction
-
-" 打开HTML快捷方式
-nmap <F12> :call OpenHtml()<cr>
+" " 使用默认浏览器快速打开html文件
+" function! OpenHtml()
+"     if &filetype == "html"
+"         execute 'silent ! start "1" "%:p"'
+"     else
+"         echo "当前文件不是html文件"
+"     endif
+" endfunction
+"
+" " 打开HTML快捷方式
+" nmap <F12> :call OpenHtml()<cr>
 
 " treesitter 找不到折叠问题的设置
 function FoldConfig()
@@ -211,6 +211,7 @@ endfunction
 autocmd BufAdd,BufEnter,BufNew,BufNewFile,BufWinEnter * :call FoldConfig()
 
 
+" =============================================================== 修复python导入包错误问题 ============================================================= 
 " 检查python的pth文件是否存在并将当前目录填入到pth中
 function! AddPth(...)
 python << EOF
@@ -241,4 +242,40 @@ EOF
 endfunction
 
 " 自动命令每次保存重启一下Lsp
-autocmd BufWritePost,FileWritePost * LspRestart
+autocmd BufWritePost,FileWritePost *.py LspRestart
+" ======================================================================================================================================================
+
+
+" ================================================= python 文件运行自定义方法 ========================================================
+" 同pycharm相吻合的快捷方式
+" 为python文件则使用ToggleTerm悬浮窗快速运行当前文件
+" 为html文件则使用默认浏览器快速打开
+" 如果上级目录包含 allure 字样，则使用allure服务启动
+function! OpenHtmlFile()
+python << EOF
+import vim
+from pathlib import Path
+file_abs_path = vim.eval("expand('%:p')")
+parent_dir_name = Path(file_abs_path).parent.name
+if 'allure' in parent_dir_name:
+    cmd = 'TermExec cmd="allure open ."'
+else:
+    cmd = 'silent ! start "1" "%:p"'
+vim.command(cmd)
+EOF
+endfunction
+
+function! RunCurrentFile()
+    let current_file = expand("%")
+    if &filetype == 'python'
+        execute "TermExec cmd=" . "\"py " . current_file . "\"" 
+    elseif &filetype == 'html'
+        call OpenHtmlFile()
+    else
+        echo "当前不是一个python文件或者html文件"
+    endif
+endfunction
+
+nmap <C-S-F10> :call RunCurrentFile()<cr>
+" ====================================================================================================================================
+

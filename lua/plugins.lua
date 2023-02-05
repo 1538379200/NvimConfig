@@ -157,6 +157,7 @@ return require('packer').startup({function()
 	use {'ap/vim-css-color'}
 	use {'windwp/nvim-autopairs'}
 	use {'tpope/vim-surround'}
+    use {'1538379200/buffercontrol'}
 end, 
 config = {
 	display = {
