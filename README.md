@@ -102,6 +102,7 @@ EOF
 - ```zR``` 展开所有折叠，```zM``` 收缩所有折叠，```zO``` 展开当前折叠下的所有折叠，```za``` 切换折叠状态，```zj``` 和 ```zk``` 可以向下或者向上跳转到折叠处
 - [vim-surround](https://github.com/tpope/vim-surround)符号操作快捷键可查看其文档，这是能快速用符号包括单词的插件
 - ```Alt+j``` 跳转下一个函数开头，```Alt+k``` 跳转上一个函数开头，同 ```]m``` 和 ```[m``` 
+- ```Ctrl+Shift+F10``` 快速使用toggleterm运行python，如果是html文件直接默认浏览器打开，如果html文件在含有 ```allure``` 字样的目录下，则使用allure open打开
 
 ### todo和错误搜索
 
