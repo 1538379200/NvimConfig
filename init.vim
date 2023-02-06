@@ -40,12 +40,9 @@ let python3_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python3
 
 " 设置neovide编辑器中的样式
 if exists("g:neovide")
-<<<<<<< HEAD
   " set guifont=JetBrainsMono\ NFM:h11
   set guifont=Noto\ Sans\ Mono\ CJK\ SC:h14
-=======
   set guifont=JetBrainsMono\ NFM:h11
->>>>>>> tmp
   " set guifont=JetBrainsMonoNL\ Nerd\ Font\ Mono:h11
   let g:neovide_confirm_quit = v:true
   let g:neovide_hide_mouse_when_typing = v:true
