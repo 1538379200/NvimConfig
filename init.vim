@@ -41,7 +41,8 @@ let python3_host_prog = "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Pyt
 " 设置neovide编辑器中的样式
 if exists("g:neovide")
   " set guifont=JetBrainsMono\ NFM:h11
-  set guifont=JetBrainsMonoNL\ Nerd\ Font\ Mono:h11
+  set guifont=Noto\ Sans\ Mono\ CJK\ SC:h14
+  " set guifont=JetBrainsMonoNL\ Nerd\ Font\ Mono:h11
   let g:neovide_confirm_quit = v:true
   let g:neovide_hide_mouse_when_typing = v:true
 endif
@@ -97,6 +98,17 @@ nnoremap <C-Down> <C-e>
 " 彩虹括号配置
 let g:rainbow_active = 1
 
+" 设置编辑模式下的移动
+imap <C-k> <Up>
+imap <C-j> <Down>
+imap <C-h> <Left>
+imap <C-l> <Right>
+nmap <A-h> <Esc>:bp<CR>
+nmap <A-l> <Esc>:bn<CR>
+nmap <leader>o <esc>:NvimTreeToggle<CR>
+imap <C-d> <BackSpace>
+
+" ========================================================== Telescope 配置 ==========================================================
 " 符号匹配配置
 lua << EOF
 local status, autopairs = pcall(require, "nvim-autopairs")
@@ -107,23 +119,41 @@ autopairs.setup({
 })
 EOF
 
-" 符号替换快捷键配置
-" nnoremap <leader><leader> <Esc>:norm ysiw
+" 查找项目中是否有作为标志的 root.txt 文件
+function! FindRootFile()
+    if strlen(globpath(".", "root.txt"))
+        let g:project = fnamemodify("root.txt", ":p:h")
+    else
+        let parent_mark = '../'
+        for path in range(10)
+            if strlen(globpath(parent_mark, "root.txt"))
+                let g:project = fnamemodify("root.txt", ":p:h")
+                break
+            else
+                let parent_mark = parent_mark . '../'
+            endif
+        endfor
+    endif
+endfunction
 
-" 设置编辑模式下的移动
-imap <C-k> <Up>
-imap <C-j> <Down>
-imap <C-h> <Left>
-imap <C-l> <Right>
-nmap <A-h> <Esc>:bp<CR>
-nmap <A-l> <Esc>:bn<CR>
-nmap <leader>o <esc>:NvimTreeToggle<CR>
-imap <C-d> <BackSpace>
+" 替换原来的启动，如果设置了项目根目录，则切入根目录再开启文件选择
+function! SwitchRootAndOpenTogglescope()
+    if exists("g:project")
+        execute "cd " . g:project
+    endif
+    execute "Telescope find_files"
+endfunction
+
+" 自动化命令设置项目根路径
+autocmd VimEnter,GUIEnter * :call FindRootFile()
+
 " 文件选择设置
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
+" nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>ff <cmd>call SwitchRootAndOpenTogglescope()<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+" ==================================================================================================================================
 
 " 设置函数切换快捷方式
 nmap <A-k> [m
