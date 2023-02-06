@@ -181,7 +181,7 @@ EOF
 
 :call AddPth(0, "D:\abc\hello.pth")   这将会把 project 目录名称，存放到 D:\abc\hello.pth 文件中
 ```
-- 添加完成后，如果你没有重启vim，将仍是报红的状态，你可以使用 ```:LspRestart``` 重启一下Lsp插件快速更新状态
+- 添加完成后，程序会自动重启一次Lsp服务
 
 
 ### dashboard修改windows支持
