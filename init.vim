@@ -34,14 +34,18 @@ set autoread
 set termguicolors
 set scrolloff=5
 "" set background = light
-" let python3_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
+let python3_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
 " let python_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
-let python3_host_prog = "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python39\\python"
+" let python3_host_prog = "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python39\\python"
 
 " 设置neovide编辑器中的样式
 if exists("g:neovide")
+<<<<<<< HEAD
   " set guifont=JetBrainsMono\ NFM:h11
   set guifont=Noto\ Sans\ Mono\ CJK\ SC:h14
+=======
+  set guifont=JetBrainsMono\ NFM:h11
+>>>>>>> tmp
   " set guifont=JetBrainsMonoNL\ Nerd\ Font\ Mono:h11
   let g:neovide_confirm_quit = v:true
   let g:neovide_hide_mouse_when_typing = v:true
@@ -247,6 +251,7 @@ function! AddPth(...)
 python << EOF
 import vim
 from pathlib import Path
+import platform
 import sys
 python_path = sys.executable
 if python_path.lower().endswith(".exe"):
@@ -256,25 +261,44 @@ else:
 pack_path = str(python_path / "Lib" / "site-packages")
 current_project = vim.eval("expand('%:p')")
 if int(vim.eval("a:0")) > 0:
-    args = vim.eval("a:1")
+    if int(vim.eval("a:0")) == 1:
+        args = vim.eval("a:1")
+        exist_file = None
+    elif int(vim.eval("a:0")) == 2:
+        args = vim.eval("a:1")
+        exist_file = vim.eval("a:2")
 else:
     args = "0"
+    exist_file = None
 if args.isdigit():
     insert_path = str(Path(current_project).parents[int(args)])
 else:
     insert_path = vim.eval("a:1")
-filename = insert_path.split("\\")[-1] + ".pth"
-save_file = Path(pack_path) / filename
-with save_file.open("w", encoding="utf8") as f:
+split_var = "/"
+if platform.system().lower() == "windows":
+    split_var = "\\"
+filename = insert_path.split(split_var)[-1] + ".pth"
+if exist_file is not None:
+    is_path = Path(exist_file).is_absolute()
+    if is_path:
+        save_file = Path(exist_file)
+        filename = save_file.name
+        pack_path = save_file.parent
+    else:
+        filename = exist_file + '.pth'
+        save_file = Path(pack_path) / filename
+else:
+    save_file = Path(pack_path) / filename
+with save_file.open("a", encoding="utf8") as f:
     f.write(insert_path)
-print(f"The pth file '{filename}' is successfully created to the '{pack_path}', save data: '{insert_path}'!!!!!!")
+print(f"The pth file '{filename}' is successfully created to the '{pack_path}', saved data: '{insert_path}'!!!!!!")
+vim.command("LspRestart")
 EOF
 endfunction
-
+" ======================================================================================================================================================
+"
 " 自动命令每次保存重启一下Lsp
 autocmd BufWritePost,FileWritePost *.py LspRestart
-" ======================================================================================================================================================
-
 
 " ================================================= python 文件运行自定义方法 ========================================================
 " 同pycharm相吻合的快捷方式
