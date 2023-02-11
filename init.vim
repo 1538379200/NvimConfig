@@ -333,3 +333,17 @@ endfunction
 nmap <C-S-F10> :call RunCurrentFile()<cr>
 " ====================================================================================================================================
 
+
+" ================================================ vsnip 代码片段相关设置 ============================================================
+if has("win32") || has("win64") || has("win16")
+    let split_symbol="\\"
+else
+    let split_symbol="/"
+endif
+let g:vsnip_snippet_dir=fnamemodify($MYVIMRC, ":h") . split_symbol . "vsnip"
+
+imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+" ====================================================================================================================================
