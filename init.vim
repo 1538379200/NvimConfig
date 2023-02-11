@@ -35,18 +35,20 @@ set autoread
 set termguicolors
 set scrolloff=5
 "" set background = light
-let python3_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
+" let python3_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
 " let python_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
-" let python3_host_prog = "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python39\\python"
+let python3_host_prog = "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python39\\python"
 
 " 设置neovide编辑器中的样式
 if exists("g:neovide")
-  " set guifont=JetBrainsMono\ NFM:h11
-  set guifont=Noto\ Sans\ Mono\ CJK\ SC:h12
-  " set guifont=JetBrainsMono\ NFM:h11
-  " set guifont=JetBrainsMonoNL\ Nerd\ Font\ Mono:h11
-  let g:neovide_confirm_quit = v:true
-  let g:neovide_hide_mouse_when_typing = v:true
+    " set guifont=JetBrainsMono\ NFM:h11
+    " set guifont=Noto\ Sans\ Mono\ CJK\ SC:h12
+    set guifont=FiraCode\ NFM:h10
+    set linespace=8
+    " set guifont=JetBrainsMono\ NFM:h11
+    " set guifont=JetBrainsMonoNL\ Nerd\ Font\ Mono:h11
+    let g:neovide_confirm_quit = v:true
+    let g:neovide_hide_mouse_when_typing = v:true
 endif
 
 " 设置折叠模式，按照更多的缩进

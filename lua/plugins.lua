@@ -8,6 +8,11 @@ return require('packer').startup({function()
 	use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
 	use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
 	use 'L3MON4D3/LuaSnip' -- Snippets plugin
+    use {"hrsh7th/cmp-vsnip"}
+    use {"hrsh7th/vim-vsnip"}
+    use {"hrsh7th/cmp-buffer"}
+    use {"hrsh7th/cmp-path"}
+    use {"hrsh7th/cmp-cmdline"}
 	use {
 	    "williamboman/nvim-lsp-installer",
 	}
@@ -157,7 +162,8 @@ return require('packer').startup({function()
 	use {'ap/vim-css-color'}
 	use {'windwp/nvim-autopairs'}
 	use {'tpope/vim-surround'}
-    use {'1538379200/buffercontrol'}
+    -- use {'1538379200/buffercontrol'}
+    use {"1538379200/vim-switch-keyboard"}
 end, 
 config = {
 	display = {
