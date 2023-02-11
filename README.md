@@ -145,6 +145,7 @@ EOF
 
 ### 补全插件管理
 > **配置中，已经将补全文件路径做了修改，存放在nvim配置目录下的 ```vsnip``` 文件夹下，默认已有一个 ```python.json``` **
+
 这里演示vsnip的使用，工程中也安装了支持cmp的 ```luasnip``` ，你也许可以选择其他你喜欢的代码片段补全插件，比如 [ultisnips](https://github.com/SirVer/ultisnips) 等
 
 - 使用命令 ```:VsnipOpen``` 可以打开预设的配置文件，使用：```echo g:vsnip_snippet_dir``` 可以查看配置的目录
