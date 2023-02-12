@@ -10,6 +10,7 @@ require("smartsplit")
 require("lspsaga_keymap")
 require("treesitter_conf")
 require("lsp_installer")
+-- require("bufferline_config")
 EOF
 
 " 设置leader按键
@@ -39,17 +40,20 @@ set scrolloff=5
 " let python_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
 let python3_host_prog = "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python39\\python"
 
+" ========================================== neovide 编辑器设置 ========================================== 
 " 设置neovide编辑器中的样式
 if exists("g:neovide")
     " set guifont=JetBrainsMono\ NFM:h11
     " set guifont=Noto\ Sans\ Mono\ CJK\ SC:h12
     set guifont=FiraCode\ NFM:h10
     set linespace=8
+    let g:neovide_remember_window_size = v:true
     " set guifont=JetBrainsMono\ NFM:h11
     " set guifont=JetBrainsMonoNL\ Nerd\ Font\ Mono:h11
     let g:neovide_confirm_quit = v:true
     let g:neovide_hide_mouse_when_typing = v:true
 endif
+" ========================================================================================================
 
 " 设置折叠模式，按照更多的缩进
 " manual 代表手工定义的折叠
@@ -78,16 +82,21 @@ colorscheme tokyonight-moon
 nnoremap <A-Right> :bn<CR>		
 nnoremap <A-Left> :bp<CR>
 nnoremap <A-Down> :bd<CR>
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#enabled = 1        " 为1 则启动顶部标签栏，0 为关闭
+" let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_sep = ''
+" let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#buffer_nr_show = 1        "显示buffer编号
 let g:airline#extensions#tabline#buffer_nr_format = '%s:'
 let g:airline#extensions#battery#enabled = 1
-let g:airline_left_sep = ''
+" let g:airline_left_sep = ''
+let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
-let g:airline_theme='solarized'
+" let g:airline_statusline_ontop=1    " 将状态栏设置到顶部
+" let g:airline_theme='solarized'
+let g:airline_theme='bubblegum'
 
 " 平滑滚动
 " lua require('neoscroll').setup()

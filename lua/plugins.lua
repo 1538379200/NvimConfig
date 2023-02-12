@@ -157,13 +157,14 @@ return require('packer').startup({function()
 	use {'morhetz/gruvbox'}
 	use {'cdelledonne/vim-cmake'}
 	use {'karb94/neoscroll.nvim'}
-	use {'thinca/vim-quickrun'}
+	-- use {'thinca/vim-quickrun'}
 	use {'luochen1990/rainbow'}
 	use {'ap/vim-css-color'}
 	use {'windwp/nvim-autopairs'}
 	use {'tpope/vim-surround'}
-    -- use {'1538379200/buffercontrol'}
+    use {'1538379200/buffercontrol'}
     use {"1538379200/vim-switch-keyboard"}
+    use {'akinsho/bufferline.nvim', tag = "v1.*", requires = 'nvim-tree/nvim-web-devicons'}
 end, 
 config = {
 	display = {
