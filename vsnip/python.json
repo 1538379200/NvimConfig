@@ -47,5 +47,91 @@
             "with open(${1}, \"${2}\", encoding=\"utf8\") as f:", 
             "\t${0}"
         ]
+    },
+    "pytestaddopts": {
+        "prefix": ["pytest_addoption"], 
+        "body": [
+            "def pytest_addoption(parser):", 
+            "\tparser.addoption(\"${1}\", default=\"${2}\", action=\"store\", help=\"${0}\")"
+        ]
+    },
+    "pytest_configure": {
+        "prefix": ["pytest_configure"],
+        "body": [
+            "def pytest_configure(config: pytest.Config):", 
+            "\t# config.addinivalue_line(\"markers\", \"marker_name: description\")", 
+            "\t# config.getoption(\"option\")", 
+            "\t# config.option.log_file = xxx", 
+            "\t${0}"
+        ]
+    }, 
+    "pytest_collection_modifyitems": {
+        "prefix": ["pytest_collection_modifyitems"], 
+        "body": [
+            "def pytest_collection_modifyitems(session: pytest.Session, config: pytest.Config, items: list):", 
+            "\t# item: pytest.Item", 
+            "\t${0}"
+        ]
+    }, 
+    "pytest_runtest_protocol": {
+        "prefix": ["pytest_runtest_protocol"], 
+        "body": [
+            "def pytest_runtest_protocol(item: pytest.Item, nextitem: pytest.Item):", 
+            "\t# from _pytest.runner import runtestprotocol", 
+            "\t${0}"
+        ]
+    },
+    "pytest_runtest_logstart": {
+        "prefix": ["pytest_runtest_logstart"], 
+        "body": [
+            "def pytest_runtest_logstart(nodeid: str, location):", 
+            "\t${0}"
+        ]
+    }, 
+    "pytest_runtest_logfinish": {
+        "prefix": ["pytest_runtest_logfinish"], 
+        "body": [
+            "def pytest_runtest_logfinish(nodeid: str, location):", 
+            "\t${0}"
+        ]
+    }, 
+    "pytest_runtest_setup": {
+        "prefix": ["pytest_runtest_setup"], 
+        "body": [
+            "def pytest_runtest_setup(item: pytest.Item):", 
+            "\t${0}"
+        ]
+    }, 
+    "pytest_runtest_call": {
+        "prefix": ["pytest_runtest_call"], 
+        "body": [
+            "def pytest_runtest_call(item: pytest.Item):",
+            "\t${0}"
+        ]
+    }, 
+    "pytest_runtest_makereport": {
+        "prefix": ["pytest_runtest_makereport"], 
+        "body": [
+            "@pytest.hookimpl(hookwrapper=True)", 
+            "def pytest_runtest_makereport(item: pytest.Item, call: pytest.CallInfo):", 
+            "\tresult = yield", 
+            "\treport: pytest.TestReport = result.get_result()", 
+            "\t${0}"
+        ]
+    }, 
+    "pytest_terminal_summary": {
+        "prefix": ["pytest_terminal_summary"], 
+        "body": [
+            "def pytest_terminal_summary(terminalreporter, exitstatus: pytest.ExitCode, config: pytest.Config):", 
+            "\t# print(\"total:\", terminalreporter._numcollected)", 
+            "\t# print('passed:', len([i for i in terminalreporter.stats.get('passed', []) if i.when != 'teardown']))", 
+            "\t# print('failed:', len([i for i in terminalreporter.stats.get('failed', []) if i.when != 'teardown']))", 
+            "\t# print('error:', len([i for i in terminalreporter.stats.get('error', []) if i.when != 'teardown']))", 
+            "\t# print('skipped:', len([i for i in terminalreporter.stats.get('skipped', []) if i.when != 'teardown']))", 
+            "\t# print('成功率：%.2f' % (len(terminalreporter.stats.get('passed', []))/terminalreporter._numcollected*100)+'%')", 
+            "\t# duration = time.time() - terminalreporter._sessionstarttime", 
+            "\t# print('total times:', duration, 'seconds')", 
+            "\t${0}"
+        ]
     }
 }
