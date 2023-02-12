@@ -133,5 +133,26 @@
             "\t# print('total times:', duration, 'seconds')", 
             "\t${0}"
         ]
+    },
+    "testcese": {
+        "prefix": ["def testcase"], 
+        "body": [
+            "@allure.title(\"${1}\")",
+            "def test_${2}(self${3}):", 
+            "\t...${0}"
+        ]
+    }, 
+    "allurestep": {
+        "prefix": ["with allure.step"], 
+        "body": [
+            "with allure.step(f\"${1}\"):", 
+            "\t...${0}"
+        ]
+    }, 
+    "pathlib": {
+        "prefix": ["Path()"],
+        "body": [
+            "Path(__file__${1}).resolve()${0}"
+        ]
     }
 }
