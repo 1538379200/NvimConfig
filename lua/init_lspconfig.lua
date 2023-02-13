@@ -49,7 +49,8 @@ cmp.setup {
   }),
   sources = {
     { name = 'nvim_lsp' },
-    { name = 'vsnip' },
+    -- { name = 'vsnip' },
+    { name="ultisnips"},
     { name = 'path' },
     { name = 'buffer' },
   },

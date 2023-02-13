@@ -1,0 +1,94 @@
+snippet allurecls "allure class" b
+@allure.epic("${1}")
+@allure.feature("${2}")
+@allure.story("${3}")
+class ${4}: 
+	${0}
+endsnippet
+
+snippet pytestaddopts "pytest option" b
+def pytest_addoption(parser):, 
+	parser.addoption("${1}", default="${2}", action="store", help="${0}")
+endsnippet
+
+snippet pytestrun "pytest run file" b
+import pytest
+import os
+
+
+if __name__ == "__main__":
+	pytest.main(${1}), 
+	os.system("allure generate ./result${2} -o ./allure-report${0} --clean")
+endsnippet
+	
+
+snippet pytest_configure "pytest config hook" b
+def pytest_configure(config: pytest.Config):
+	# config.addinivalue_line("markers", "marker_name: description")
+	# config.getoption("option")
+	# config.option.log_file = xxx 
+	${0}
+endsnippet
+
+snippet pytest_collection_modifyitems "pytest collect case hook" b
+def pytest_collection_modifyitems(session: pytest.Session, config: pytest.Config, items: list):
+	# item: pytest.Item 
+	${0}
+endsnippet
+
+snippet pytest_runtest_protocol "pytest hook" b
+def pytest_runtest_protocol(item: pytest.Item, nextitem: pytest.Item):
+	# from _pytest.runner import runtestprotocol
+	${0}
+endsnippet
+
+snippet pytest_runtest_logstart "pytest hook" b
+def pytest_runtest_logstart(nodeid: str, location):
+	${0}
+endsnippet
+
+snippet pytest_runtest_logfinish "pytest hook" b
+def pytest_runtest_logfinish(nodeid: str, location):
+	${0}
+endsnippet
+
+snippet pytest_runtest_setup "pytest hook" b
+def pytest_runtest_setup(item: pytest.Item):
+	${0}
+endsnippet
+
+snippet pytest_runtest_call "pytest hook" b
+def pytest_runtest_call(item: pytest.Item):
+	${0}
+endsnippet
+
+snippet pytest_runtest_makereport "pytest hook" b
+@pytest.hookimpl(hookwrapper=True)
+def pytest_runtest_makereport(item: pytest.Item, call: pytest.CallInfo):
+	result = yield
+	report: pytest.TestReport = result.get_result()
+	${0}
+endsnippet
+
+snippet pytest_terminal_summary "pytest hook" b
+def pytest_terminal_summary(terminalreporter, exitstatus: pytest.ExitCode, config: pytest.Config):
+	# print("total:", terminalreporter._numcollected)
+	# print('passed:', len([i for i in terminalreporter.stats.get('passed', []) if i.when != 'teardown']))
+	# print('failed:', len([i for i in terminalreporter.stats.get('failed', []) if i.when != 'teardown'])) 
+	# print('error:', len([i for i in terminalreporter.stats.get('error', []) if i.when != 'teardown']))
+	# print('skipped:', len([i for i in terminalreporter.stats.get('skipped', []) if i.when != 'teardown']))
+	# print('成功率：%.2f' % (len(terminalreporter.stats.get('passed', []))/terminalreporter._numcollected*100)+'%')
+	# duration = time.time() - terminalreporter._sessionstarttime, 
+	# print('total times:', duration, 'seconds'), 
+	${0}
+endsnippet
+
+snippet allurestep "allure step"
+with allure.step(f"${1}"):
+	${0}
+endsnippet
+
+snippet Path "pathlib resolve path"
+Path(__file__${1}).resolve()${0}
+endsnippet
+	

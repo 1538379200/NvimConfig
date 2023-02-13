@@ -36,17 +36,17 @@ set autoread
 set termguicolors
 set scrolloff=3
 "" set background = light
-let python3_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
+" let python3_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
 " let python_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
-" let python3_host_prog = "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python39\\python"
+let python3_host_prog = "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python39\\python"
 
 " ========================================== neovide 编辑器设置 ========================================== 
 " 设置neovide编辑器中的样式
 if exists("g:neovide")
     " set guifont=JetBrainsMono\ NFM:h11
     " set guifont=Noto\ Sans\ Mono\ CJK\ SC:h12
-    set guifont=GoMono\ NFM:h10
-    " set guifont=FiraCode\ NFM:h10
+    " set guifont=GoMono\ NFM:h10
+    set guifont=FiraCode\ NFM:h10
     set linespace=8
     let g:neovide_remember_window_size = v:true
     " set guifont=JetBrainsMono\ NFM:h11
@@ -357,3 +357,15 @@ smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab
 imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 " ====================================================================================================================================
+
+" =============================================== ulsnips 代码片段相关设置 ==========================================================
+" let g:UltiSnipsSnippetsDir=fnamemodify($MYVIMRC, ":h") . split_symbol . "ULtiSnipsDir"
+let g:UltiSnipsSnippetDirectories=[fnamemodify($MYVIMRC, ":h") . split_symbol . "ULtiSnipsDir"]
+
+let g:UltiSnipsExpandTrigger="<tab>"
+" 使用 tab 切换下一个触发点，shit+tab 上一个触发点
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+" 使用 UltiSnipsEdit 命令时垂直分割屏幕
+let g:UltiSnipsEditSplit="vertical"
+" ===================================================================================================================================
