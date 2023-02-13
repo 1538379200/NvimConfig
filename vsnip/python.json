@@ -1,13 +1,13 @@
 {
     "main": {
-        "prefix": ["main"], 
+        "prefix": ["sp-main"], 
         "body": [
             "if __name__ == \"__main__\": \n\t..."
         ], 
         "description": "run main"
     },
     "pytestrun": {
-        "prefix": ["pytestrun", "ptr", "pytr"], 
+        "prefix": ["sp-pytestrun", "sp-ptr", "sp-pytr"], 
         "body": [
             "import pytest",
             "import os\n\n", 
@@ -17,23 +17,15 @@
         ]
     },
     "class": {
-        "prefix": ["clsc", "class"], 
+        "prefix": ["sp-clsc", "sp-class"], 
         "body": [
             "class ${1}:", 
             "\tdef __init__(self${2}):", 
-            "\t...${0}"
-        ]
-    },
-    "allure": {
-        "prefix": ["@allure"], 
-        "body": [
-            "@allure.epic(${1})", 
-            "@allure.feature(${2})", 
-            "@allure.story(${0})"
+            "\t${0}"
         ]
     },
     "allurecls": {
-        "prefix": ["allurecls"],
+        "prefix": ["sp-allurecls"],
         "body": [
             "@allure.epic(${1})", 
             "@allure.feature(${2})", 
@@ -42,21 +34,21 @@
         ] 
     },
     "with open": {
-        "prefix": ["with open"], 
+        "prefix": ["sp-with open"], 
         "body": [
             "with open(${1}, \"${2}\", encoding=\"utf8\") as f:", 
             "\t${0}"
         ]
     },
     "pytestaddopts": {
-        "prefix": ["pytest_addoption"], 
+        "prefix": ["sp-pytest_addoption"], 
         "body": [
             "def pytest_addoption(parser):", 
             "\tparser.addoption(\"${1}\", default=\"${2}\", action=\"store\", help=\"${0}\")"
         ]
     },
     "pytest_configure": {
-        "prefix": ["pytest_configure"],
+        "prefix": ["sp-pytest_configure"],
         "body": [
             "def pytest_configure(config: pytest.Config):", 
             "\t# config.addinivalue_line(\"markers\", \"marker_name: description\")", 
@@ -66,7 +58,7 @@
         ]
     }, 
     "pytest_collection_modifyitems": {
-        "prefix": ["pytest_collection_modifyitems"], 
+        "prefix": ["sp-pytest_collection_modifyitems"], 
         "body": [
             "def pytest_collection_modifyitems(session: pytest.Session, config: pytest.Config, items: list):", 
             "\t# item: pytest.Item", 
@@ -74,7 +66,7 @@
         ]
     }, 
     "pytest_runtest_protocol": {
-        "prefix": ["pytest_runtest_protocol"], 
+        "prefix": ["sp-pytest_runtest_protocol"], 
         "body": [
             "def pytest_runtest_protocol(item: pytest.Item, nextitem: pytest.Item):", 
             "\t# from _pytest.runner import runtestprotocol", 
@@ -82,35 +74,35 @@
         ]
     },
     "pytest_runtest_logstart": {
-        "prefix": ["pytest_runtest_logstart"], 
+        "prefix": ["sp-pytest_runtest_logstart"], 
         "body": [
             "def pytest_runtest_logstart(nodeid: str, location):", 
             "\t${0}"
         ]
     }, 
     "pytest_runtest_logfinish": {
-        "prefix": ["pytest_runtest_logfinish"], 
+        "prefix": ["sp-pytest_runtest_logfinish"], 
         "body": [
             "def pytest_runtest_logfinish(nodeid: str, location):", 
             "\t${0}"
         ]
     }, 
     "pytest_runtest_setup": {
-        "prefix": ["pytest_runtest_setup"], 
+        "prefix": ["sp-pytest_runtest_setup"], 
         "body": [
             "def pytest_runtest_setup(item: pytest.Item):", 
             "\t${0}"
         ]
     }, 
     "pytest_runtest_call": {
-        "prefix": ["pytest_runtest_call"], 
+        "prefix": ["sp-pytest_runtest_call"], 
         "body": [
             "def pytest_runtest_call(item: pytest.Item):",
             "\t${0}"
         ]
     }, 
     "pytest_runtest_makereport": {
-        "prefix": ["pytest_runtest_makereport"], 
+        "prefix": ["sp-pytest_runtest_makereport"], 
         "body": [
             "@pytest.hookimpl(hookwrapper=True)", 
             "def pytest_runtest_makereport(item: pytest.Item, call: pytest.CallInfo):", 
@@ -120,7 +112,7 @@
         ]
     }, 
     "pytest_terminal_summary": {
-        "prefix": ["pytest_terminal_summary"], 
+        "prefix": ["sp-pytest_terminal_summary"], 
         "body": [
             "def pytest_terminal_summary(terminalreporter, exitstatus: pytest.ExitCode, config: pytest.Config):", 
             "\t# print(\"total:\", terminalreporter._numcollected)", 
@@ -134,23 +126,15 @@
             "\t${0}"
         ]
     },
-    "testcese": {
-        "prefix": ["def testcase"], 
-        "body": [
-            "@allure.title(\"${1}\")",
-            "def test_${2}(self${3}):", 
-            "\t...${0}"
-        ]
-    }, 
     "allurestep": {
-        "prefix": ["with allure.step"], 
+        "prefix": ["sp-with allure.step"], 
         "body": [
             "with allure.step(f\"${1}\"):", 
-            "\t...${0}"
+            "\t${0}"
         ]
     }, 
     "pathlib": {
-        "prefix": ["Path()"],
+        "prefix": ["sp-Path()"],
         "body": [
             "Path(__file__${1}).resolve()${0}"
         ]

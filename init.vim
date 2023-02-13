@@ -34,18 +34,19 @@ set expandtab		" 使用tab输入不会转换成字符而是空格
 set softtabstop=0	" 不将tab和空格混合使用
 set autoread
 set termguicolors
-set scrolloff=5
+set scrolloff=3
 "" set background = light
-" let python3_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
+let python3_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
 " let python_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
-let python3_host_prog = "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python39\\python"
+" let python3_host_prog = "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python39\\python"
 
 " ========================================== neovide 编辑器设置 ========================================== 
 " 设置neovide编辑器中的样式
 if exists("g:neovide")
     " set guifont=JetBrainsMono\ NFM:h11
     " set guifont=Noto\ Sans\ Mono\ CJK\ SC:h12
-    set guifont=FiraCode\ NFM:h10
+    set guifont=GoMono\ NFM:h10
+    " set guifont=FiraCode\ NFM:h10
     set linespace=8
     let g:neovide_remember_window_size = v:true
     " set guifont=JetBrainsMono\ NFM:h11
