@@ -143,7 +143,7 @@ EOF
 - ```q``` 关闭目录树
 - ```m``` 标记多个进行操作 
 
-### 补全插件管理
+### vsnip补全插件管理
 > 配置中，为了不需要每次使用此文件都重新配置，已经将补全文件路径做了修改，存放在nvim配置目录下的 ```vsnip``` 文件夹下，默认已有一个 ```python.json``` 
 
 这里演示vsnip的使用，工程中也安装了支持cmp的 ```luasnip``` ，你也许可以选择其他你喜欢的代码片段补全插件，比如 [ultisnips](https://github.com/SirVer/ultisnips) 等
@@ -166,6 +166,41 @@ EOF
 - ```description``` 你可以放一些描述文字
 - 你可以在body中使用 ```${1}``` 这种占位符，每次使用<TAB>可以跳转到这里直接进行修改
 - 末尾使用 ```${0}``` 可以指明结束，TAB后则不再往下跳转，这些是写在body字符串里面的
+
+### UltiSnips代码片段管理（目前框架使用此）
+> 本配置中，安装会自带第三方的代码片段，自定义的补全文件夹，存放在项目的 ```ULtiSnipsDir``` 文件夹下，你可以在这里创建编写补全的代码片段，已存在 ```python.snippets``` 文件
+> ultisnippets 非常强大，你可以使用shell、python等去进行构造，你可以去查看[第三方的中文文档](https://github.com/Linfee/ultisnips-zh-doc)，也可以前往[官方地址](https://github.com/SirVer/ultisnips)
+
+#### 补全写法简单示例：
+```
+snippet allurecls "allure class" b
+@allure.epic(${1})
+@allure.feature(${2})
+@allure.story(${3})
+class ${4}: 
+	${0}
+endsnippet
+```
+
+- ```snippet``` 和 ```endsnippet``` 是开始结束标志，```allurecls``` 是触发单词，引号中是说明描述，中间为实际代码块
+- ```${1}``` 代表占位符，使用TAB可跳转到此处进行编辑操作
+- ```b``` 代表这个命令只在行开头适用，其他参数如下
+- ```i``` 表示触发字符可以在单词内
+- ```w``` 表示触发字符的前后必须是一个字母分界点
+- ```r``` 表示触发字符可以是一个正则表达式
+- ```t``` 表示展开的代码片段中如果有制表符，原样输出，即使你的 vimrc 里面设置了 expandtab
+- ```m``` 表示删除代码片段右边的所有空白字符
+- ```e``` 表示自定义上下文
+- ```A``` 表示自动触发，不需要按 tab，类似于 VIM 中的 abbr
+
+#### 第三方截图参考
+![image](https://user-images.githubusercontent.com/42434762/218480884-276bb558-6d3d-4e93-988c-621f4ac06418.png)
+
+![image](https://user-images.githubusercontent.com/42434762/218480802-a6f32d43-7923-4797-bbc7-331841fcdab7.png)
+
+![image](https://user-images.githubusercontent.com/42434762/218480679-c355e70b-090d-488f-a9c4-f43ed030e510.png)
+
+
 
 ### 分屏操作
 - 在文件树或者telescope中，都可以使用 ```Ctrl+x``` ```Ctrl+v``` 进行水平垂直分屏
