@@ -10,16 +10,22 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
 -- luasnip setup
 local luasnip = require 'luasnip'
 -- nvim-cmp setup
 local cmp = require 'cmp'
 cmp.setup {
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
-  },
+  -- snippet = {
+  --   expand = function(args)
+  --     luasnip.lsp_expand(args.body)
+  --   end,
+  -- },
+    snippet = {
+            expand = function(args)
+              vim.fn["UltiSnips#Anon"](args.body)
+            end,
+          },
   mapping = cmp.mapping.preset.insert({
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -46,6 +52,18 @@ cmp.setup {
         fallback()
       end
     end, { 'i', 's' }),
+    -- ["<Tab>"] = cmp.mapping(
+    --   function(fallback)
+    --     cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
+    --   end,
+    --   { "i", "s", --[[ "c" (to enable the mapping in command mode) ]] }
+    -- ),
+    -- ["<S-Tab>"] = cmp.mapping(
+    --   function(fallback)
+    --     cmp_ultisnips_mappings.jump_backwards(fallback)
+    --   end,
+    --   { "i", "s", --[[ "c" (to enable the mapping in command mode) ]] }
+    -- ),
   }),
   sources = {
     { name = 'nvim_lsp' },
