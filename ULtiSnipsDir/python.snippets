@@ -6,7 +6,7 @@ class ${4}:
 	${0}
 endsnippet
 
-snippet pytestaddopts "pytest option" b
+snippet pytest_addoption "pytest option" b
 def pytest_addoption(parser):, 
 	parser.addoption("${1}", default="${2}", action="store", help="${0}")
 endsnippet
@@ -90,5 +90,9 @@ endsnippet
 
 snippet Path "pathlib resolve path"
 Path(__file__${1}).resolve()${0}
+endsnippet
+
+snippet ftime "格式化时间的常用写法 %Y-%m-%d %H:%M:%S" i
+"%Y-%m-%d %H:%M:%S"${0}
 endsnippet
 	

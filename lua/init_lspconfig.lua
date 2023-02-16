@@ -30,40 +30,50 @@ cmp.setup {
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
+    -- ['<Space>'] = cmp.mapping.close(),
+    ["<C-z>"] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-    -- ["<Tab>"] = cmp.mapping(
-    --   function(fallback)
-    --     cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
-    --   end,
-    --   { "i", "s", --[[ "c" (to enable the mapping in command mode) ]] }
-    -- ),
-    -- ["<S-Tab>"] = cmp.mapping(
-    --   function(fallback)
-    --     cmp_ultisnips_mappings.jump_backwards(fallback)
-    --   end,
-    --   { "i", "s", --[[ "c" (to enable the mapping in command mode) ]] }
-    -- ),
+    -- ['<Tab>'] = cmp.mapping(function(fallback)
+    --   if cmp.visible() then
+    --     cmp.select_next_item()
+    --   elseif luasnip.expand_or_jumpable() then
+    --     luasnip.expand_or_jump()
+    --   else
+    --     fallback()
+    --   end
+    -- end, { 'i', 's' }),
+    -- ['<S-Tab>'] = cmp.mapping(function(fallback)
+    --   if cmp.visible() then
+    --     cmp.select_prev_item()
+    --   elseif luasnip.jumpable(-1) then
+    --     luasnip.jump(-1)
+    --   else
+    --     fallback()
+    --   end
+    -- end, { 'i', 's' }),
+    ["<C-CR>"] = cmp.mapping(
+            function(fallback)
+                -- cmp_ultisnips_mappings.expand(fallback)
+                cmp_ultisnips_mappings.compose{"expand"}(fallback)
+            end,
+            {"i", "s", }
+        ),
+    ["<Tab>"] = cmp.mapping(
+      function(fallback)
+        -- cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
+        cmp_ultisnips_mappings.jump_forwards(fallback)
+      end,
+      { "i", "s", --[[ "c" (to enable the mapping in command mode) ]] }
+    ),
+    ["<S-Tab>"] = cmp.mapping(
+      function(fallback)
+        cmp_ultisnips_mappings.jump_backwards(fallback)
+      end,
+      { "i", "s", --[[ "c" (to enable the mapping in command mode) ]] }
+    ),
   }),
   sources = {
     { name = 'nvim_lsp' },

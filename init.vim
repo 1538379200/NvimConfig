@@ -359,13 +359,13 @@ smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-T
 " ====================================================================================================================================
 
 " =============================================== ulsnips 代码片段相关设置 ==========================================================
-" let g:UltiSnipsSnippetsDir=fnamemodify($MYVIMRC, ":h") . split_symbol . "ULtiSnipsDir"
+let g:UltiSnipsSnippetsDir=fnamemodify($MYVIMRC, ":h") . split_symbol . "ULtiSnipsDir"
 let g:UltiSnipsSnippetDirectories=[fnamemodify($MYVIMRC, ":h") . split_symbol . "ULtiSnipsDir"]
 
-let g:UltiSnipsExpandTrigger="<tab>"
-" 使用 tab 切换下一个触发点，shit+tab 上一个触发点
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+" let g:UltiSnipsExpandTrigger="<C-Tab>"
+" " 使用 tab 切换下一个触发点，shit+tab 上一个触发点
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 " 使用 UltiSnipsEdit 命令时垂直分割屏幕
 let g:UltiSnipsEditSplit="vertical"
 " ===================================================================================================================================
