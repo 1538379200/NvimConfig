@@ -168,7 +168,13 @@ return require('packer').startup({function()
     use {'1538379200/buffercontrol'}
     use {"1538379200/vim-switch-keyboard"}
     use {'akinsho/bufferline.nvim', tag = "v1.*", requires = 'nvim-tree/nvim-web-devicons'}
-end, 
+    
+    -- markdown预览
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+    })
+    end, 
 config = {
 	display = {
 		open_fn = require('packer.util').float,

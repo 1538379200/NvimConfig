@@ -10,6 +10,7 @@ require("smartsplit")
 require("lspsaga_keymap")
 require("treesitter_conf")
 require("lsp_installer")
+require("togglerterm_git")
 -- require("bufferline_config")
 EOF
 
@@ -369,3 +370,7 @@ let g:UltiSnipsSnippetDirectories=[fnamemodify($MYVIMRC, ":h") . split_symbol . 
 " 使用 UltiSnipsEdit 命令时垂直分割屏幕
 let g:UltiSnipsEditSplit="vertical"
 " ===================================================================================================================================
+
+" ================================================ toggleterm 提示消息设置 ================================================  
+
+" =========================================================================================================================
