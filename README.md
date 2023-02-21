@@ -284,7 +284,8 @@ end
 
 
 ## 正在使用部分插件
-![image](https://user-images.githubusercontent.com/42434762/215682613-465cbffd-a660-4154-b79f-a3906dc34e3f.png)
+![image](https://user-images.githubusercontent.com/42434762/220235167-fc755fb0-6203-474d-906f-06e5504a2372.png)
+
 
 
 
