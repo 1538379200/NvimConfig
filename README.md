@@ -66,10 +66,11 @@ EOF
 
 ## 预览
 
-![image](https://user-images.githubusercontent.com/42434762/181021793-686e883a-0c50-4ead-998e-da8738a2ae2e.png)
-![image](https://user-images.githubusercontent.com/42434762/180933865-8f63d266-5dcd-43d4-b605-16764dcc1acd.png)
-![image](https://user-images.githubusercontent.com/42434762/180933925-805f9ec9-c5d7-40bb-adf0-09be44aabd4b.png)
-![image](https://user-images.githubusercontent.com/42434762/181533919-f82cdad7-6e6a-4000-b269-419a38329a01.png)
+![image](https://user-images.githubusercontent.com/42434762/220234291-28aade5f-2d8a-486a-b781-57a1838c1234.png)
+![image](https://user-images.githubusercontent.com/42434762/220234336-68da03ea-b37b-41c6-8e9f-f3e4f58a18ee.png)
+![image](https://user-images.githubusercontent.com/42434762/220234382-0bcee981-634b-4315-b9e0-8662fbbf98aa.png)
+![image](https://user-images.githubusercontent.com/42434762/220234409-22d32c59-56aa-4144-b507-10dad1556576.png)
+![image](https://user-images.githubusercontent.com/42434762/220234499-c9dd4ef9-7e44-4821-b0f6-77a578f49d92.png)
 
 
 ## 修改配色
