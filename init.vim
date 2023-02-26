@@ -13,10 +13,9 @@ require("lsp_installer")
 require("togglerterm_git")
 -- require("bufferline_config")
 EOF
-
+                
 " 设置leader按键
 let mapleader = " "
-
 " ----------------------------nvim基础配置------------------------------------
 set nobackup
 set noswapfile
@@ -37,17 +36,17 @@ set autoread
 set termguicolors
 set scrolloff=3
 "" set background = light
-let python3_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
+" let python3_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
 " let python_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
-" let python3_host_prog = "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python39\\python"
+let python3_host_prog = "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python39\\python"
 
 " ========================================== neovide 编辑器设置 ========================================== 
 " 设置neovide编辑器中的样式
 if exists("g:neovide")
     " set guifont=JetBrainsMono\ NFM:h11
     " set guifont=Noto\ Sans\ Mono\ CJK\ SC:h12
-    set guifont=GoMono\ NFM:h10
-    " set guifont=FiraCode\ NFM:h10
+    " set guifont=GoMono\ NFM:h10
+    set guifont=FiraCode\ NFM:h10
     set linespace=8
     let g:neovide_remember_window_size = v:true
     " set guifont=JetBrainsMono\ NFM:h11
@@ -213,6 +212,17 @@ nmap <A-j> ]m
 vmap <C-c> "+y
 nmap <C-v> "+p
 imap <C-v> <Esc>"+pa
+
+" 设置输入时、选择模式和普通模式下的Home和End按键
+imap <C-S-l> <End>
+imap <C-S-h> <Esc>^i
+nmap <C-S-h> ^
+nmap <C-S-l> <End>
+vmap <C-S-h> ^
+vmap <C-S-l> <End>
+
+" 设置pycharm形式的回车增加空行
+nmap <S-Enter> o<Esc>
 
 " 错误显示插件快捷键
 nnoremap <leader>xx <cmd>TroubleToggle<cr>								" 显错误列表
