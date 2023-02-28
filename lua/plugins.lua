@@ -174,6 +174,34 @@ return require('packer').startup({function()
         "iamcco/markdown-preview.nvim",
         run = function() vim.fn["mkdp#util#install"]() end,
     })
+
+    -- 多光标插件
+    use ({'mg979/vim-visual-multi', branch = 'master'})
+
+    -- 悬浮命令行插件
+    -- use({
+    --   "folke/noice.nvim",
+    --   config = function()
+    --     require("noice").setup({
+    --         -- add any options here
+    --     })
+    --   end,
+    --   requires = {
+    --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+    --     "MunifTanjim/nui.nvim",
+    --     -- OPTIONAL:
+    --     --   `nvim-notify` is only needed, if you want to use the notification view.
+    --     --   If not available, we use `mini` as the fallback
+    --     "rcarriga/nvim-notify",
+    --     }
+    -- })
+    
+    -- rust工具插件
+    use 'neovim/nvim-lspconfig'
+    use 'simrat39/rust-tools.nvim'
+    -- Debugging
+    use 'nvim-lua/plenary.nvim'
+    use 'mfussenegger/nvim-dap'
     end, 
 config = {
 	display = {
