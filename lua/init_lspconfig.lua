@@ -81,6 +81,7 @@ cmp.setup {
     { name="ultisnips"},
     { name = 'path' },
     { name = 'buffer' },
+    { name = "crates" },
   },
 }
 cmp.setup.cmdline('/', {
