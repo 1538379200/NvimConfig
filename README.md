@@ -248,6 +248,18 @@ endsnippet
 ```
 - 添加完成后，程序会自动重启一次Lsp服务
 
+### 关于rust-analyzer不能安装问题
+使用 ```nvim-lsp-installer``` 可能不能安装 ```rust-analyzer``` 我们需要手动去下载，其他的大部分语言，如果使用 ```nvim-lsp-installer``` 不能安装，基本都可以使用npm进行安装，前提是下载了node.js，使用npm安装使用 ```npm i -g pyright``` 这里使用pyright示例，```rust-analyzer``` 不适用此方式
+
+- 前往[rust-analyzer](https://github.com/rust-lang/rust-analyzer/releases)下载二进制的可运行文件
+
+![image](https://user-images.githubusercontent.com/42434762/221791582-69d84ab5-ffc2-4c8b-8ae9-856e7500ec67.png)
+
+- 将下载文件解压，会有一个exe和一个pdb文件，进入我们nvim的data文件夹 ```nvim-data``` ，在 ```nvim-data/lsp_servers``` 文件夹中，创建一个 ```rust_analyzer``` 文件夹，注意是下划线
+
+- 将解压的两个文件放入创建的文件夹中，重启nvim，再次运行 ```:LspInstallInfo``` 查看是否已有
+
+- 上述的基本路径是 ```C:\Users\<username>\AppData\Local\nvim-data\lsp_servers```
 
 ### dashboard修改windows支持
 找到 ```C:\Users\2\AppData\Local\nvim-data\site\pack\packer\opt\dashboard-nvim\lua\dashboard\theme``` 下的 ```hyper.lua``` 文件，修改function ```map_key``` ，大概在185行左右，将内容修改成：
