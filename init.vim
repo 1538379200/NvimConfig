@@ -80,12 +80,14 @@ set iskeyword=@,48-57,_,192-255,-
 " colorscheme OceanicNext
 colorscheme darcula-solid-custom
 
-" -----------------airline配置-----------------
 "  设置切换、关闭tab标签快捷键，就是替换原来的bn和bp命令
-" nnoremap <A-Right> :bn<CR>
-nmap <A-Right> :silent exec "bn"<CR>
-nnoremap <silent> <A-Left> :bp<CR>
-nnoremap <silent> <A-Down> :bd<CR>
+" " nnoremap <A-Right> :bn<CR>
+" nmap <A-Right> :silent exec "bn"<CR>
+" nnoremap <silent> <A-Left> :bp<CR>
+" nnoremap <silent> <A-Down> :bd<CR>
+" nmap <A-Right> <cmd>bn<CR>
+
+" -----------------airline配置-----------------
 let g:airline#extensions#tabline#enabled = 1        " 为1 则启动顶部标签栏，0 为关闭
 " let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_sep = ''
@@ -120,9 +122,11 @@ imap <C-k> <Up>
 imap <C-j> <Down>
 imap <C-h> <Left>
 imap <C-l> <Right>
-nmap <A-h> <Esc>:bp<CR>
-nmap <A-l> <Esc>:bn<CR>
-nmap <leader>o <esc>:NvimTreeToggle<CR>
+" nmap <A-h> <Esc>:bp<CR>
+" nmap <A-l> <Esc>:bn<CR>
+nmap <A-h> <cmd>bp<CR>
+nmap <A-l> <cmd>bn<CR>
+nmap <leader>o <cmd>NvimTreeToggle<CR>
 imap <C-d> <BackSpace>
 
 " ========================================================== Telescope 配置 ==========================================================
@@ -354,7 +358,7 @@ function! RunCurrentFile()
     endif
 endfunction
 
-nmap <C-S-F10> :call RunCurrentFile()<cr>
+nmap <C-S-F10> <cmd>call RunCurrentFile()<cr>
 " ====================================================================================================================================
 
 " ==================================================== 悬浮命令行设置 ====================================================
