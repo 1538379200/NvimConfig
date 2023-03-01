@@ -249,6 +249,25 @@ endsnippet
 ```
 - 添加完成后，程序会自动重启一次Lsp服务
 
+### 关于markdown-preview不能使用问题
+
+> 注意的是，我们这里是默认使用的没有安装node.js的选项，你可以自己去插件文件中修改，但是这个并不影响。
+插件路径是 ```nvim/lua/plugins.lua```
+
+首先你应该先进入[markdown-preview](https://github.com/iamcco/markdown-preview.nvim)官网去查看具体的安装方法，你应该确定你是否是安装了node.js的状态，如果安装了node.js，你应该使用的命令是：
+
+```lua
+use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+```
+
+如果你显示安装好了仍不能打开，则可以进行如下操作
+
+- 首先尝试在nvim中使用命令 ```:call mkdp#util#install()``` 去进行安装，如果不行，如下
+- 进入文件夹 ```nvim-data/site/pack/packer/start/markdown-preview.nvim/app```
+- 打开cmd或者其他命令行工具，输入 ```npm install```
+- 等待安装完成重新再试
+
+
 ### 关于rust-analyzer不能安装问题
 使用 ```nvim-lsp-installer``` 可能不能安装 ```rust-analyzer``` 我们需要手动去下载，其他的大部分语言，如果使用 ```nvim-lsp-installer``` 不能安装，基本都可以使用npm进行安装，前提是下载了node.js，使用npm安装使用 ```npm i -g pyright``` 这里使用pyright示例，```rust-analyzer``` 不适用此方式
 

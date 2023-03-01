@@ -355,8 +355,10 @@ function! RunCurrentFile()
         execute "TermExec cmd=" . "\"py " . current_file . "\"" 
     elseif &filetype == 'html'
         call OpenHtmlFile()
+    elseif &filetype == 'markdown'
+        execute "MarkdownPreview"
     else
-        echo "当前不是一个python文件或者html文件"
+        echo "当前不是一个python/html/markdown文件"
     endif
 endfunction
 
