@@ -26,7 +26,7 @@ set relativenumber
 set mouse=a
 set shiftwidth=4	" 使用 > 进行缩进时的空格量
 set cursorline
-set cursorcolumn
+" set cursorcolumn
 " set showcmd
 set fileencoding=utf-8
 set tabstop=4		" 使用tab代表的空格数
@@ -37,16 +37,16 @@ set autoread
 set termguicolors
 set scrolloff=3
 "" set background = light
-" let python3_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
-let python3_host_prog = "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python39\\python"
+let python3_host_prog = "C:\\Users\\2\\AppData\\Local\\Programs\\Python\\Python310\\python"
+" let python3_host_prog = "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python39\\python"
 
 " ========================================== neovide 编辑器设置 ========================================== 
 " 设置neovide编辑器中的样式
 if exists("g:neovide")
-    " set guifont=JetBrainsMono\ NFM:h11
+    set guifont=JetBrainsMono\ NFM:h9
     " set guifont=Noto\ Sans\ Mono\ CJK\ SC:h12
-    " set guifont=GoMono\ NFM:h10
-    set guifont=FiraCode\ NFM:h10
+    " set guifont=GoMono\ NFM:h9
+    " set guifont=FiraCode\ NFM:h9
     set linespace=8
     let g:neovide_remember_window_size = v:true
     " set guifont=JetBrainsMono\ NFM:h11
@@ -74,13 +74,16 @@ set iskeyword=@,48-57,_,192-255,-
 
 " 设置颜色主题
 " colorscheme gruvbox
-colorscheme tokyonight-moon
+" colorscheme tokyonight-moon
 " colorscheme github_light
 " colorscheme github_dimmed
+" colorscheme OceanicNext
+colorscheme darcula-solid-custom
 
 " -----------------airline配置-----------------
 "  设置切换、关闭tab标签快捷键，就是替换原来的bn和bp命令
-nnoremap <silent> <A-Right> :bn<CR>		
+" nnoremap <A-Right> :bn<CR>
+nmap <A-Right> :silent exec "bn"<CR>
 nnoremap <silent> <A-Left> :bp<CR>
 nnoremap <silent> <A-Down> :bd<CR>
 let g:airline#extensions#tabline#enabled = 1        " 为1 则启动顶部标签栏，0 为关闭

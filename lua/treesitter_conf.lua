@@ -1,9 +1,10 @@
 require'nvim-treesitter.configs'.setup {
     -- 默认确定安装的语言服务
-    ensure_installed = {"html", "markdown", "toml", "python", "lua", "vim", "ini", "go", "json", "yaml", "markdown_inline"},
+    ensure_installed = {"html","python", "markdown", "toml", "lua", "vim", "ini", "go", "json", "yaml", "markdown_inline"},
     -- 高亮显示
     highlight = {
         enable = true,
+        -- disable = {"python"},
         additional_vim_regex_highlighting = false,
     },
     -- 启用增量选择，在可视化模式下，回车可以向外扩展选择，退格键收缩选择

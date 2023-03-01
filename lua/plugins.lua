@@ -51,7 +51,7 @@ return require('packer').startup({function()
 	use "lukas-reineke/indent-blankline.nvim"
 
 	-- tokyonight主题安装
-	use 'folke/tokyonight.nvim'
+	-- use 'folke/tokyonight.nvim'
 
 	-- todo插件
 	use {
@@ -122,15 +122,15 @@ return require('packer').startup({function()
 	use "chentoast/marks.nvim"
 	
     -- github 主题配色
-    use({
-      'projekt0n/github-nvim-theme', tag = 'v0.0.7',
-    -- or                            branch = '0.0.x'
-      config = function()
-        require('github-theme').setup({
-          -- ...
-        })
-      end
-    })
+    -- use({
+    --   'projekt0n/github-nvim-theme', tag = 'v0.0.7',
+    -- -- or                            branch = '0.0.x'
+    --   config = function()
+    --     require('github-theme').setup({
+    --       -- ...
+    --     })
+    --   end
+    -- })
 
     -- lsp扩展美化插件
     use({
@@ -157,7 +157,7 @@ return require('packer').startup({function()
 	use {'vim-airline/vim-airline'}
 	use {'vim-airline/vim-airline-themes'}
 	-- use {'mhinz/vim-startify'}
-	use {'morhetz/gruvbox'}
+	-- use {'morhetz/gruvbox'}
 	use {'cdelledonne/vim-cmake'}
 	use {'karb94/neoscroll.nvim'}
 	-- use {'thinca/vim-quickrun'}
@@ -210,6 +210,12 @@ return require('packer').startup({function()
             require('crates').setup()
         end,
     }
+
+    -- 主题
+    -- use 'mhartington/oceanic-next'
+
+    -- 主题
+    use { "briones-gabriel/darcula-solid.nvim", requires = "rktjmp/lush.nvim" }
     end, 
 config = {
 	display = {
