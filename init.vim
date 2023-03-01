@@ -166,7 +166,7 @@ function! SwitchRootAndOpenTogglescope()
 endfunction
 
 " 自动化命令设置项目根路径
-autocmd VimEnter,GUIEnter * <cmd>call FindRootFile()
+autocmd VimEnter,GUIEnter * :call FindRootFile()
 
 " 文件选择设置
 " nnoremap <leader>ff <cmd>Telescope find_files<cr>
