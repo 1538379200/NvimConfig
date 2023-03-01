@@ -103,6 +103,7 @@ EOF
 - [vim-surround](https://github.com/tpope/vim-surround)符号操作快捷键可查看其文档，这是能快速用符号包括单词的插件
 - ```Alt+j``` 跳转下一个函数开头，```Alt+k``` 跳转上一个函数开头，同 ```]m``` 和 ```[m``` 
 - ```Ctrl+Shift+F10``` 快速使用toggleterm运行python，如果是html文件直接默认浏览器打开，如果html文件在含有 ```allure``` 字样的目录下，则使用allure open打开
+- ```Ctrl+F12``` 可以重启lsp服务，在某些时候没有提示的时候可以使用（原为保存时自动重启一次，但会造成很大的性能损耗）
 
 ### todo和错误搜索
 
