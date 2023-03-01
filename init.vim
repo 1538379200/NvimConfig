@@ -328,7 +328,7 @@ endfunction
 " 自动命令每次保存重启一下Lsp
 " autocmd BufWritePost,FileWritePost *.py LspRestart
 " 手动进行重启操作
-nmap <C-F12> <cmd>LspRestart
+nmap <C-F12> <cmd>LspRestart<CR>
 
 " ================================================= python 文件运行自定义方法 ========================================================
 " 同pycharm相吻合的快捷方式
