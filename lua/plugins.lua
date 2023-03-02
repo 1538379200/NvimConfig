@@ -180,22 +180,25 @@ return require('packer').startup({function()
     use ({'mg979/vim-visual-multi', branch = 'master'})
 
     -- 悬浮命令行和消息插件
-    use({
-      "folke/noice.nvim",
-      config = function()
-        require("noice").setup({
-            -- add any options here
-        })
-      end,
-      requires = {
-        -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-        "MunifTanjim/nui.nvim",
-        -- OPTIONAL:
-        --   `nvim-notify` is only needed, if you want to use the notification view.
-        --   If not available, we use `mini` as the fallback
-        "rcarriga/nvim-notify",
-        }
-    })
+    -- use({
+    --   "folke/noice.nvim",
+    --   config = function()
+    --     require("noice").setup({
+    --         -- add any options here
+    --     })
+    --   end,
+    --   requires = {
+    --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+    --     "MunifTanjim/nui.nvim",
+    --     -- OPTIONAL:
+    --     --   `nvim-notify` is only needed, if you want to use the notification view.
+    --     --   If not available, we use `mini` as the fallback
+    --     "rcarriga/nvim-notify",
+    --     }
+    -- })
+
+    -- 浮窗消息展示插件
+    use 'rcarriga/nvim-notify'
     
     -- rust工具插件
     use 'neovim/nvim-lspconfig'

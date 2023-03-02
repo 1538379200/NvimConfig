@@ -12,6 +12,8 @@ require("treesitter_conf")
 require("lsp_installer")
 require("togglerterm_git")
 -- require("bufferline_config")
+-- 平滑滚动插件
+-- require('neoscroll').setup()
 require("ntree")
 require("rust_tools")
 EOF
@@ -329,7 +331,12 @@ endfunction
 " 自动命令每次保存重启一下Lsp
 " autocmd BufWritePost,FileWritePost *.py LspRestart
 " 手动进行重启操作
-nmap <C-F12> <cmd>LspRestart<CR>
+function! LspRestartCustomer()
+    execute "LspRestart"
+    lua require("notify")("重启lsp服务", "info", {title="重启lsp", timeout=1000, stages="fade"})
+endfunction
+
+nmap <C-F12> <cmd>call LspRestartCustomer()<CR>
 
 " ================================================= python 文件运行自定义方法 ========================================================
 " 同pycharm相吻合的快捷方式
@@ -353,23 +360,31 @@ endfunction
 function! RunCurrentFile()
     let current_file = expand("%")
     if &filetype == 'python'
+        execute "TermExec cmd=\"exit\""
+        " lua require("notify")("清理并运行python", "info", {title="运行当前文件", timeout=1000, stages="fade"})
+        sleep 1000m
         execute "TermExec cmd=" . "\"py " . current_file . "\"" 
     elseif &filetype == 'html'
         call OpenHtmlFile()
     elseif &filetype == 'markdown'
         execute "MarkdownPreview"
     else
-        echo "当前不是一个python/html/markdown文件"
+        lua require("notify")("当前不是一个python/html/markdown文件", "warn", {title="运行文件出错", timeout=1000, stages="fade"})
     endif
 endfunction
 
 nmap <C-S-F10> <cmd>call RunCurrentFile()<cr>
 " ====================================================================================================================================
 
-" ==================================================== 悬浮命令行设置 ====================================================
-" nnoremap : <cmd>FineCmdline<CR>
-" ========================================================================================================================
+" ================================================= 快捷显示和关闭toggleterm =================================================
+function! CloseTermFirst()
+    execute "TermExec cmd=\"exit\""
+    lua require("notify")("关闭第一个toggleterm", "info", {title="关闭term", timeout=1000, stages="fade"})
+endfunction
 
+nmap <A-\> <cmd>ToggleTermToggleAll<cr>         " 显示所有打开的toggleterm
+nmap <leader>c\ <cmd>call CloseTermFirst()<cr>     " 关闭第一个toggleterm
+" ============================================================================================================================
 
 " ================================================ vsnip 代码片段相关设置 ============================================================
 if has("win32") || has("win64") || has("win16")
@@ -396,7 +411,3 @@ let g:UltiSnipsSnippetDirectories=[fnamemodify($MYVIMRC, ":h") . split_symbol . 
 " 使用 UltiSnipsEdit 命令时垂直分割屏幕
 let g:UltiSnipsEditSplit="vertical"
 " ===================================================================================================================================
-
-" ================================================ toggleterm 提示消息设置 ================================================  
-
-" =========================================================================================================================
