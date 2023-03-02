@@ -12,6 +12,7 @@ require("treesitter_conf")
 require("lsp_installer")
 require("togglerterm_git")
 -- require("bufferline_config")
+require("ntree")
 require("rust_tools")
 EOF
                 

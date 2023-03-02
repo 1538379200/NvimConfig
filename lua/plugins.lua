@@ -24,7 +24,8 @@ return require('packer').startup({function()
 	    requires = {
 	      'kyazdani42/nvim-web-devicons', -- 可选依赖,使目录树文件有好看图标
 	    },
-	    config = function() require'nvim-tree'.setup {} end
+	    -- config = function() require'nvim-tree'.setup {} end
+        tag = 'nightly'
 	}
 	use {								-- gcc代码注释
 	    'numToStr/Comment.nvim',
@@ -178,7 +179,7 @@ return require('packer').startup({function()
     -- 多光标插件
     use ({'mg979/vim-visual-multi', branch = 'master'})
 
-    -- 悬浮命令行插件
+    -- 悬浮命令行和消息插件
     use({
       "folke/noice.nvim",
       config = function()
