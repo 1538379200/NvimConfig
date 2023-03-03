@@ -104,7 +104,10 @@ EOF
 - ```zR``` 展开所有折叠，```zM``` 收缩所有折叠，```zO``` 展开当前折叠下的所有折叠，```za``` 切换折叠状态，```zj``` 和 ```zk``` 可以向下或者向上跳转到折叠处
 - [vim-surround](https://github.com/tpope/vim-surround)符号操作快捷键可查看其文档，这是能快速用符号包括单词的插件
 - ```Alt+j``` 跳转下一个函数开头，```Alt+k``` 跳转上一个函数开头，同 ```]m``` 和 ```[m``` 
-- ```Ctrl+Shift+F10``` 快速使用toggleterm运行python，此方法会首先自动关闭一次term，避免忘记亲管理缓存，如果是html文件直接默认浏览器打开，如果html文件在含有 ```allure``` 字样的目录下，则使用allure open打开；如果是markdown文件，则使用markdown-preview插件从浏览器打开查看，记得手动关闭 ```:MarkdownPreviewStop```；
+- ```Ctrl+Shift+F10``` 快速使用toggleterm运行python，此方法会首先自动关闭一次term，避免忘记亲管理缓存
+	- 如果是html文件直接默认浏览器打开，如果html文件在含有 ```allure``` 字样的目录下，则使用allure open打开；
+	- 如果是markdown文件，则使用markdown-preview插件从浏览器打开查看，记得手动关闭 ```:MarkdownPreviewStop```；
+	- 如果是rust文件，则会以 ```cargo run``` 的形式运行当前main
 - ```Ctrl+F12``` 可以重启lsp服务，在某些时候没有提示的时候可以使用（原为保存时自动重启一次，但会造成很大的性能损耗）
 
 ### todo和错误搜索
