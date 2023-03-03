@@ -181,11 +181,11 @@ return require('packer').startup({function()
     -- 悬浮命令行和消息插件
     -- use({
     --   "folke/noice.nvim",
-    --   config = function()
-    --     require("noice").setup({
-    --         -- add any options here
-    --     })
-    --   end,
+    --   -- config = function()
+    --   --   require("noice").setup({
+    --   --       -- add any options here
+    --   --   })
+    --   -- end,
     --   requires = {
     --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
     --     "MunifTanjim/nui.nvim",

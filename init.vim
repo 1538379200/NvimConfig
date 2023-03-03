@@ -17,6 +17,7 @@ require("togglerterm_git")
 -- require('neoscroll').setup()
 require("ntree")
 require("rust_tools")
+-- require("noice_config")
 EOF
                 
 " 设置leader按键
@@ -368,10 +369,14 @@ function! RunCurrentFile()
         execute "TermExec cmd=" . "\"py " . current_file . "\"" 
     elseif &filetype == 'html'
         call OpenHtmlFile()
+    elseif &filetype == 'rust'
+        execute "TermExec cmd=\"exit\""
+        sleep 1000m
+        execute "TermExec cmd=\"cargo run\""
     elseif &filetype == 'markdown'
         execute "MarkdownPreview"
     else
-        lua require("notify")("当前不是一个python/html/markdown文件", "warn", {title="运行文件出错", timeout=1000, stages="fade"})
+        lua require("notify")("当前不是一个python/html/markdown/rust文件", "warn", {title="运行文件出错", timeout=1000, stages="fade"})
     endif
 endfunction
 
