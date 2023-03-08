@@ -61,14 +61,14 @@ cmp.setup {
             end,
             {"i", "s", }
         ),
-    ["<Tab>"] = cmp.mapping(
+    ["<C-Tab>"] = cmp.mapping(
       function(fallback)
         -- cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
         cmp_ultisnips_mappings.jump_forwards(fallback)
       end,
       { "i", "s", --[[ "c" (to enable the mapping in command mode) ]] }
     ),
-    ["<S-Tab>"] = cmp.mapping(
+    ["<C-S-Tab>"] = cmp.mapping(
       function(fallback)
         cmp_ultisnips_mappings.jump_backwards(fallback)
       end,

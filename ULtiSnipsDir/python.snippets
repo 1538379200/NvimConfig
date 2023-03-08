@@ -96,4 +96,7 @@ snippet ftime "格式化时间的常用写法 %Y-%m-%d %H:%M:%S" i
 "%Y-%m-%d %H:%M:%S"${0}
 endsnippet
 
+snippet "([^\s].*)\.print" "打印" r
+print(`!p snip.rv = match.group(1)`)${0}
+endsnippet
 	
