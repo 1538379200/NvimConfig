@@ -99,4 +99,28 @@ endsnippet
 snippet "([^\s].*)\.print" "打印" r
 print(`!p snip.rv = match.group(1)`)${0}
 endsnippet
-	
+
+global !p
+def doc_command(snip):
+	# pre_line = snip.buffer[snip.line-1].strip()
+	pre_line = vim.current.buffer[vim.current.window.cursor[0] - 2].strip()
+	doc_list = pre_line.split("(")[-1].split(")")[0].split(",")
+	doc_list = [ ":param " + x.split(":")[0].strip() + ": " for x in doc_list if x != "self"]
+	# doc = "\n".join(doc_list)
+	return doc_list
+endglobal
+snippet doc "函数注释" 
+"""
+${1: 函数、方法说明}
+
+`!p 
+if not snip.c:
+	snip.rv = "\n".join(doc_command(snip))
+`
+:return: 
+"""
+endsnippet
+
+snippet pf "格式化打印" r
+print(f"")
+endsnippet
