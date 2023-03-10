@@ -104,7 +104,7 @@ def doc_command(snip):
 	# pre_line = snip.buffer[snip.line-1].strip()
 	pre_line = vim.current.buffer[vim.current.window.cursor[0] - 2].strip()
 	doc_list = pre_line.split("(")[-1].split(")")[0].split(",")
-	doc_list = [ ":param " + x.split(":")[0].strip() + ": " for x in doc_list if x != "self"]
+	doc_list = [ ":param " + x.split(":")[0].split("=")[0].strip() + ": " for x in doc_list if x != "self"]
 	# doc = "\n".join(doc_list)
 	return doc_list
 endglobal
