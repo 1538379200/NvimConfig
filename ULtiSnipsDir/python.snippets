@@ -84,8 +84,7 @@ def pytest_terminal_summary(terminalreporter, exitstatus: pytest.ExitCode, confi
 endsnippet
 
 snippet allurestep "allure step"
-with allure.step(f"${1}"):
-	${0}
+with allure.step(f"${0}"):
 endsnippet
 
 snippet Path "pathlib resolve path"
