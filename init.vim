@@ -118,6 +118,8 @@ let g:airline_theme='bubblegum'
 nnoremap <C-Up> <C-y>
 nnoremap <C-Down> <C-e>
 
+nmap <C-x> <cmd>bd<cr>
+
 " 彩虹括号配置
 let g:rainbow_active = 1
 
