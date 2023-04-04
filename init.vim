@@ -1,5 +1,4 @@
 lua << EOF
-vim.notify = require("notify")
 require('plugins')
 require('lsp')
 require('init_lspconfig')
@@ -339,7 +338,7 @@ function! LspRestartCustomer()
     lua require("notify")("重启lsp服务", "info", {title="重启lsp", timeout=1000, stages="fade"})
 endfunction
 
-nmap <C-F12> <cmd>call LspRestartCustomer()<CR>
+nmap <F8> <cmd>call LspRestartCustomer()<CR>
 
 " ================================================= python 文件运行自定义方法 ========================================================
 " 同pycharm相吻合的快捷方式

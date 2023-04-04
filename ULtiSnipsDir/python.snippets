@@ -110,8 +110,7 @@ def doc_command(snip):
 endglobal
 snippet doc "函数注释" 
 """
-${1: 函数、方法说明}
-
+${0}
 `!p 
 if not snip.c:
 	snip.rv = "\n".join(doc_command(snip))
@@ -122,4 +121,8 @@ endsnippet
 
 snippet pf "格式化打印" i
 print(f"${0}")
+endsnippet
+
+snippet blocker "快捷allure的blocker优先级" b
+@allure.severity("blocker")
 endsnippet
